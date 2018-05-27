@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 //SERVICIO HTTP PERSONALIZADO
 import { MiHttpService } from './servicios/mi-http.service';
+import { HttpModule } from '@angular/http';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -65,7 +66,8 @@ const config: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBxJkyfYWlA2dETpe29fUe2CYIOVze1bPw'
     }),
-    RouterModule.forRoot(config)
+    RouterModule.forRoot(config),
+    HttpModule
   ],
   providers: [MiHttpService],
   bootstrap: [AppComponent]

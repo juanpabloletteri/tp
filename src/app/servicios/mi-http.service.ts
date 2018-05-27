@@ -8,7 +8,7 @@ export class MiHttpService {
 
   constructor(public http: Http) { }
 
-  ruta: string = 'http://localhost/apiparcial2018/';
+  ruta: string = 'http://localhost/apitp/';
 
   public httpGetP(url: string) {
     return this.http
