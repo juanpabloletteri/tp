@@ -1,11 +1,13 @@
-export class Encargado {
+export class Usuario {
 
-    id_encargado: number;
+    id_usuario: number;
+    mail: string;
+    password: string;
     nombre: string;
     apellido: string;
     dni: number;
     telefono: number;
-    legajo: number;
+    tipo: number;
 
     constructor() { }
 }

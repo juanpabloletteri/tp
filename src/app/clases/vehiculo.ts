@@ -5,4 +5,6 @@ export class Vehiculo {
     marca: string;
     modelo: string;
     anio: number;
+
+    constructor() { }
 }

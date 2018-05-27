@@ -7,4 +7,5 @@ export class Chofer {
     telefono: number;
     legajo: number;
 
+    constructor() { }
 }

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+//SERVICIO HTTP PERSONALIZADO
+import { MiHttpService } from './servicios/mi-http.service';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -65,7 +67,7 @@ const config: Routes = [
     }),
     RouterModule.forRoot(config)
   ],
-  providers: [],
+  providers: [MiHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

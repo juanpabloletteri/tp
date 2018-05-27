@@ -7,4 +7,5 @@ export class Cliente {
     telefono: number;
     domicilio: number;
 
+    constructor() { }
 }

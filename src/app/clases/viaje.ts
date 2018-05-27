@@ -11,4 +11,5 @@ export class Viaje {
     puntaje_vehiculo: number;
     puntaje_cliente: number;
 
+    constructor() { }
 }
