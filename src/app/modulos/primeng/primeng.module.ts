@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ButtonModule} from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    ChartModule
   ],
   exports: [
     CommonModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    ChartModule
   ],
   declarations: []
 })
