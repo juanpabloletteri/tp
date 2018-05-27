@@ -15,13 +15,14 @@ import { ChoferComponent } from './componentes/chofer/chofer.component';
 import { EncargadoComponent } from './componentes/encargado/encargado.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { GraficosComponent } from './componentes/graficos/graficos.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 
 //ROUTEO
 const config: Routes = [
   {
     path: '',
-    component: AppComponent
+    component: LoginComponent
   },
   {
     path: 'chofer',
@@ -52,7 +53,8 @@ const config: Routes = [
     ChoferComponent,
     EncargadoComponent,
     MapaComponent,
-    GraficosComponent
+    GraficosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
