@@ -10,6 +10,8 @@ export class Viaje {
     puntaje_chofer: number;
     puntaje_vehiculo: number;
     puntaje_cliente: number;
+    estado: number;
+    forma_pago: number;
 
     constructor() { }
 }

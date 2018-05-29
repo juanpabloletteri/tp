@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 //SERVICIO HTTP PERSONALIZADO
 import { MiHttpService } from './servicios/mi-http.service';
 import { HttpModule } from '@angular/http';
+//SERVICIOS
+import { VehiculosService } from './servicios/vehiculos.service';
+import { ViajesService } from './servicios/viajes.service';
+import { UsuariosService } from './servicios/usuarios.service';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -69,7 +73,12 @@ const config: Routes = [
     RouterModule.forRoot(config),
     HttpModule
   ],
-  providers: [MiHttpService],
+  providers: [
+    MiHttpService,
+    VehiculosService,
+    ViajesService,
+    UsuariosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
