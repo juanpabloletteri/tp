@@ -9,6 +9,10 @@ import { HttpModule } from '@angular/http';
 import { VehiculosService } from './servicios/vehiculos.service';
 import { ViajesService } from './servicios/viajes.service';
 import { UsuariosService } from './servicios/usuarios.service';
+//CLASES
+import { Usuario } from './clases/usuario';
+import { Vehiculo } from './clases/vehiculo';
+import { Viaje } from './clases/viaje';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -80,8 +84,11 @@ const config: Routes = [
   providers: [
     MiHttpService,
     VehiculosService,
+    Vehiculo,
     ViajesService,
-    UsuariosService
+    Viaje,
+    UsuariosService,
+    Usuario
   ],
   bootstrap: [AppComponent]
 })

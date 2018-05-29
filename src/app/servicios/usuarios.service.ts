@@ -59,7 +59,7 @@ export class UsuariosService {
     return this.miUsuario.tipo;
   }
   ///////////////////////////////
-  getUsuarios(): Promise<any> {
+  traerTodosLosUsuarios(): Promise<any> {
     return this.miHttp.httpGetP('traerTodosLosUsuarios')
       .then(data => {
         console.log(data);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../../clases/usuario';
+import { UsuariosService } from '../../servicios/usuarios.service';
 
 @Component({
   selector: 'app-agregar-usuario',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private miServicioUsuario: UsuariosService, private miUsuario: Usuario) { }
 
   ngOnInit() {
+    this.miServicioUsuario.traerTodosLosUsuarios();
   }
 
 }
