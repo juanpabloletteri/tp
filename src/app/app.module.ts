@@ -23,6 +23,8 @@ import { EncargadoComponent } from './componentes/encargado/encargado.component'
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { AgregarUsuarioComponent } from './componentes/agregar-usuario/agregar-usuario.component';
+import { AgregarViajeComponent } from './componentes/agregar-viaje/agregar-viaje.component';
 
 
 //ROUTEO
@@ -61,7 +63,9 @@ const config: Routes = [
     EncargadoComponent,
     MapaComponent,
     GraficosComponent,
-    LoginComponent
+    LoginComponent,
+    AgregarUsuarioComponent,
+    AgregarViajeComponent
   ],
   imports: [
     BrowserModule,

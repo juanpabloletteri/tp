@@ -1,3 +1,11 @@
 <p>
   encargado works!
 </p>
+<p-menubar [model]="items">
+  <input type="text" pInputText placeholder="Search">
+  <button pButton label="Logout" icon="fa-sign-out"></button>
+</p-menubar>
+<br>
+
+<app-agregar-usuario *ngIf="componente==1"></app-agregar-usuario>
+<app-agregar-viaje *ngIf="componente==2"></app-agregar-viaje>
