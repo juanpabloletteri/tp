@@ -2,12 +2,19 @@
   listado works! listado: {{listado}}
 </p>
 
-<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
-  <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-  <input #gb type="text" pInputText size="50" placeholder="Ingrese su busqueda">
+<div *ngIf="datosTabla==null">
+  <h3>Cargando {{titulo}}</h3>
+  <p-progressSpinner> </p-progressSpinner>
 </div>
-<h3> {{titulo}} </h3>
-<p-dataTable [value]="datosTabla" [rows]="10" [paginator]="true" [globalFilter]="gb" sortMode="multiple" #dt2>
-  <p-header>Lista de {{titulo}} </p-header>
-  <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
-</p-dataTable>
+
+<div *ngIf="datosTabla!=null">
+  <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" placeholder="Ingrese su busqueda">
+  </div>
+  <h3> {{titulo}} </h3>
+  <p-dataTable [value]="datosTabla" [rows]="10" [paginator]="true" [globalFilter]="gb" sortMode="multiple" #dt2>
+    <p-header>Lista de {{titulo}} </p-header>
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
+  </p-dataTable>
+</div>

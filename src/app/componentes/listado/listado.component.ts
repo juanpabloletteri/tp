@@ -8,10 +8,11 @@ import { ClienteService } from '../../servicios/cliente.service';
 })
 export class ListadoComponent implements OnInit {
 
+  //el componente padre envia listado por @input() segun el codigo es 1-cliente 2-chofer o 3 vehiculo
   @Input() listado: number;
 
   cols: any[];
-  datosTabla: any;
+  datosTabla: any = null;
   titulo: string;
 
   constructor(private miServicioCliente: ClienteService) { }
