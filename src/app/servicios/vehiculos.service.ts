@@ -11,6 +11,9 @@ export class VehiculosService {
 
   constructor(private miHttp: MiHttpService, private miVehiculo: Vehiculo) { }
 
+  setIdVehiculo(data) {
+    this.miVehiculo.id_vehiculo = data;
+  }
   setMarca(data) {
     this.miVehiculo.marca = data;
   }
@@ -46,13 +49,13 @@ export class VehiculosService {
     return this.miVehiculo.anio;
   }
   getFumar() {
-    return this.miVehiculo.fumar  ;
+    return this.miVehiculo.fumar;
   }
   getAire() {
-    return this.miVehiculo.aire  ;
+    return this.miVehiculo.aire;
   }
   getBaul() {
-    return this.miVehiculo.baul  ;
+    return this.miVehiculo.baul;
   }
   ////////////////
   traerTodosLosVehiculos(): Promise<any> {
@@ -90,5 +93,5 @@ export class VehiculosService {
         return data;
       })
   }
-  
+
 }

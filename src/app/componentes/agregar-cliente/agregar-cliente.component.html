@@ -38,6 +38,12 @@
     <label for="float-input">Telefono</label>
   </div>
   <br>
+  
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miCliente.domicilio">
+    <label for="float-input">Domicilio</label>
+  </span>
+  <br>
   <br>
   
   <button pButton type="button" (click)="Agregar()" class="ui-button-success" icon="fa-check" label="Agregar"></button>
