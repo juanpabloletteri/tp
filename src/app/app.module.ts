@@ -34,6 +34,7 @@ import { AgregarChoferComponent } from './componentes/agregar-chofer/agregar-cho
 import { AgregarClienteComponent } from './componentes/agregar-cliente/agregar-cliente.component';
 import { AgregarEncargadoComponent } from './componentes/agregar-encargado/agregar-encargado.component';
 import { AgregarVehiculoComponent } from './componentes/agregar-vehiculo/agregar-vehiculo.component';
+import { ListadoComponent } from './componentes/listado/listado.component';
 
 
 //ROUTEO
@@ -77,7 +78,8 @@ const config: Routes = [
     AgregarChoferComponent,
     AgregarClienteComponent,
     AgregarEncargadoComponent,
-    AgregarVehiculoComponent
+    AgregarVehiculoComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

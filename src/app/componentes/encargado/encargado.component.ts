@@ -12,6 +12,7 @@ export class EncargadoComponent implements OnInit {
 
   items: MenuItem[];
   componente: number;
+  listado: number;
 
   ngOnInit() {
     this.items = [
@@ -26,6 +27,15 @@ export class EncargadoComponent implements OnInit {
         ]
       },
       {
+        label: 'Listados',
+        icon: 'fa-edit',
+        items: [
+          { label: 'Clientes', icon: 'fa-mail-forward', command: (click) => { this.componente = 5, this.listado = 1 } },
+          { label: 'Choferes', icon: 'fa-mail-reply', command: (click) => { this.componente = 5, this.listado = 2 } },
+          { label: 'Vehiculos', icon: 'fa-mail-reply', command: (click) => { this.componente = 5, this.listado = 3 } }
+        ]
+      },
+      {
         label: 'Modificar',
         icon: 'fa-edit',
         items: [
@@ -37,7 +47,7 @@ export class EncargadoComponent implements OnInit {
       {
         label: 'Nuevo Viaje',
         icon: 'fa-edit',
-        command: (click) => { this.componente = 5 }
+        command: (click) => { this.componente = 10 }
       },
       {
         label: 'Nuevo Cliente',

@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
+import { DataTableModule } from 'primeng/datatable';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ChartModule,
     MenubarModule,
     InputMaskModule,
-    InputTextModule
+    InputTextModule,
+    DataTableModule
   ],
   exports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ChartModule,
     MenubarModule,
     InputMaskModule,
-    InputTextModule
+    InputTextModule,
+    DataTableModule
   ],
   declarations: []
 })

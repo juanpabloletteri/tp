@@ -12,4 +12,6 @@
 <app-agregar-encargado *ngIf="componente==3"></app-agregar-encargado>
 <app-agregar-vehiculo *ngIf="componente==4"></app-agregar-vehiculo>
 
-<app-agregar-viaje *ngIf="componente==5"></app-agregar-viaje>
+<app-listado [listado]="listado" *ngIf="componente==5"></app-listado>
+
+<app-agregar-viaje *ngIf="componente==10"></app-agregar-viaje>
