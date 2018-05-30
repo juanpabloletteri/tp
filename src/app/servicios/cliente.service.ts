@@ -95,6 +95,13 @@ export class ClienteService {
         return data;
       })
   }
+  traerClientePorDomicilio(data): Promise<any> {
+    return this.miHttp.httpPostP('traerClientePorDomicilio', data)
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   modificarCliente(data): Promise<any> {
     return this.miHttp.httpPostP('modificarCliente', data)
       .then(data => {
