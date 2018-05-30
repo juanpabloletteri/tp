@@ -1,0 +1,42 @@
+<p>
+  agregar-cliente works!
+</p>
+<div>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miCliente.mail">
+    <label for="float-input">Mail</label>
+  </span>
+  <br>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miCliente.password">
+    <label for="float-input">Password</label>
+  </span>
+  <br>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miCliente.nombre">
+    <label for="float-input">Nombre</label>
+  </span>
+  <br>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miCliente.apellido">
+    <label for="float-input">Apellido</label>
+  </span>
+  <br>
+
+  <div class="ui-float-label">
+      <p-inputMask [(ngModel)]="miCliente.dni" id="float-input" mask="99.999.999"></p-inputMask>
+      <label for="float-input">DNI</label>
+    </div>
+    <br>
+
+  <div class="ui-float-label">
+    <p-inputMask [(ngModel)]="miCliente.telefono" id="float-input" mask="99-9999-9999"></p-inputMask>
+    <label for="float-input">Telefono</label>
+  </div>
+  <br>
+
+</div>

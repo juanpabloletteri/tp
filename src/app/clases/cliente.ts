@@ -1,4 +1,4 @@
-export class Cliente {
+/*export class Cliente {
 
     id_cliente: number;
     nombre: string;
@@ -8,4 +8,15 @@ export class Cliente {
     domicilio: number;
 
     constructor() { }
+}*/
+
+import { Usuario } from './usuario';
+
+export class Cliente extends Usuario {
+
+    id_cliente: number;
+    id_usuario: number;
+    domicilio: number;
+
+    constructor() { super() }
 }

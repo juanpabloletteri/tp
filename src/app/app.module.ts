@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { MiHttpService } from './servicios/mi-http.service';
 import { HttpModule } from '@angular/http';
 //SERVICIOS
+import { ClienteService } from './servicios/cliente.service';
 import { VehiculosService } from './servicios/vehiculos.service';
 import { ViajesService } from './servicios/viajes.service';
-import { UsuariosService } from './servicios/usuarios.service';
+//import { UsuariosService } from './servicios/usuarios.service';
 //CLASES
-import { Usuario } from './clases/usuario';
+//import { Usuario } from './clases/usuario';
+import { Cliente } from './clases/cliente';
 import { Vehiculo } from './clases/vehiculo';
 import { Viaje } from './clases/viaje';
 //MODULO PRIME NG
@@ -27,8 +29,11 @@ import { EncargadoComponent } from './componentes/encargado/encargado.component'
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { AgregarUsuarioComponent } from './componentes/agregar-usuario/agregar-usuario.component';
 import { AgregarViajeComponent } from './componentes/agregar-viaje/agregar-viaje.component';
+import { AgregarChoferComponent } from './componentes/agregar-chofer/agregar-chofer.component';
+import { AgregarClienteComponent } from './componentes/agregar-cliente/agregar-cliente.component';
+import { AgregarEncargadoComponent } from './componentes/agregar-encargado/agregar-encargado.component';
+import { AgregarVehiculoComponent } from './componentes/agregar-vehiculo/agregar-vehiculo.component';
 
 
 //ROUTEO
@@ -68,8 +73,11 @@ const config: Routes = [
     MapaComponent,
     GraficosComponent,
     LoginComponent,
-    AgregarUsuarioComponent,
-    AgregarViajeComponent
+    AgregarViajeComponent,
+    AgregarChoferComponent,
+    AgregarClienteComponent,
+    AgregarEncargadoComponent,
+    AgregarVehiculoComponent
   ],
   imports: [
     BrowserModule,
@@ -83,12 +91,14 @@ const config: Routes = [
   ],
   providers: [
     MiHttpService,
+    ClienteService,
+    Cliente,
     VehiculosService,
     Vehiculo,
     ViajesService,
-    Viaje,
-    UsuariosService,
-    Usuario
+    Viaje
+    //UsuariosService,
+    //Usuario
   ],
   bootstrap: [AppComponent]
 })

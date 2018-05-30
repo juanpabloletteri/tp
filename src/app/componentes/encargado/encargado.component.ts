@@ -19,9 +19,10 @@ export class EncargadoComponent implements OnInit {
         label: 'Nuevo',
         icon: 'fa-edit',
         items: [
-          { label: 'Cliente', icon: 'fa-mail-forward' },
-          { label: 'Chofer', icon: 'fa-mail-reply' },
-          { label: 'Vehiculo', icon: 'fa-mail-reply' }
+          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.componente = 1 } },
+          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.componente = 2 } },
+          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.componente = 3 } },
+          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.componente = 4 } }
         ]
       },
       {
@@ -36,12 +37,12 @@ export class EncargadoComponent implements OnInit {
       {
         label: 'Nuevo Viaje',
         icon: 'fa-edit',
-        command: (click) => { this.nuevoViaje() }
+        command: (click) => { this.componente = 5 }
       },
       {
-        label: 'Nuevo Usuario',
+        label: 'Nuevo Cliente',
         icon: 'fa-edit',
-        command: (click) => { this.nuevoUsuario() }
+        command: (click) => { this.componente = 2 }
       },
       {
         label: 'Informes',
@@ -51,10 +52,4 @@ export class EncargadoComponent implements OnInit {
     ];
   }
 
-  nuevoUsuario() {
-    this.componente = 1;
-  }
-  nuevoViaje() {
-    this.componente = 2;
-  }
 }
