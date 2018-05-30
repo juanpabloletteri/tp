@@ -11,6 +11,8 @@ export class AgregarClienteComponent implements OnInit {
 
   constructor(private miServicioCliente: ClienteService, private miCliente: Cliente) {
     this.miCliente.tipo = 3;
+    this.miCliente.dni = 0;
+    this.miCliente.password = (this.miCliente.dni).toString();
   }
 
   ngOnInit() {
