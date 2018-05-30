@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { ClienteService } from '../../servicios/cliente.service';
 
 @Component({
@@ -17,6 +17,10 @@ export class ListadoComponent implements OnInit {
   constructor(private miServicioCliente: ClienteService) { }
 
   ngOnInit() {
+
+  }
+  ngOnChanges(changes: SimpleChanges) {
+
     switch (this.listado) {
       case 1:
         //CLIENTES
@@ -37,15 +41,21 @@ export class ListadoComponent implements OnInit {
         ];
         break;
       case 2:
+        this.datosTabla = null;
+
+        this.titulo = 'CHOFERES';
         this.cols = [
           { field: 'nombre', header: 'Nombre' },
           { field: 'apellido', header: 'Apellido' },
+          { field: 'telefono', header: 'Telefono' },
           { field: 'dni', header: 'Dni' },
           { field: 'legajo', header: 'Legajo' }
         ];
         break;
       default:
+        this.datosTabla = null;
 
+        this.titulo = 'VEHICULOS';
         break;
 
     }
