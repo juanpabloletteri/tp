@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { ClienteService } from '../../servicios/cliente.service';
-
+import { VehiculosService } from '../../servicios/vehiculos.service';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -15,7 +15,7 @@ export class ListadoComponent implements OnInit {
   datosTabla: any = null;
   titulo: string;
 
-  constructor(private miServicioCliente: ClienteService) { }
+  constructor(private miServicioCliente: ClienteService, private miServicioVehiculo: VehiculosService) { }
 
   ngOnInit() {
 
@@ -41,6 +41,7 @@ export class ListadoComponent implements OnInit {
           { field: 'domicilio', header: 'Domicilio' }
         ];
         break;
+
       case 2:
         this.datosTabla = null;
 
@@ -53,10 +54,23 @@ export class ListadoComponent implements OnInit {
           { field: 'legajo', header: 'Legajo' }
         ];
         break;
+
       default:
-        this.datosTabla = null;
+
+        this.miServicioVehiculo.traerTodosLosVehiculos()
+          .then(data => {
+            this.datosTabla = data;
+          })
 
         this.titulo = 'VEHICULOS';
+        this.cols = [
+          { field: 'marca', header: 'Marca' },
+          { field: 'modelo', header: 'Modelo' },
+          { field: 'anio', header: 'Año' },
+          { field: 'fumar', header: 'Fumar' },
+          { field: 'aire', header: 'Aire' },
+          { field: 'baul', header: 'Baul' }
+        ];
         break;
 
     }
