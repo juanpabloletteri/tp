@@ -21,6 +21,7 @@ import { PrimengModule } from './modulos/primeng/primeng.module';
 import { AgmCoreModule } from '@agm/core';
 //MODULO ROUTEO
 import { RouterModule, Route, Routes } from '@angular/router';
+import { AuthService } from './servicios/auth.service';
 //MODULOS COMPONENTES
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
@@ -49,7 +50,8 @@ const config: Routes = [
   },
   {
     path: 'cliente',
-    component: ClienteComponent
+    component: ClienteComponent,
+    canActivate:[AuthService]
   },
   {
     path: 'encargado',
