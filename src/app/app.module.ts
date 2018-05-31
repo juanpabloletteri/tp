@@ -21,7 +21,8 @@ import { PrimengModule } from './modulos/primeng/primeng.module';
 import { AgmCoreModule } from '@agm/core';
 //MODULO ROUTEO
 import { RouterModule, Route, Routes } from '@angular/router';
-import { AuthService } from './servicios/auth.service';
+//MODULO AUTENTICACION
+import { AutenticacionService } from './servicios/autenticacion.service';
 //MODULOS COMPONENTES
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
@@ -46,24 +47,28 @@ const config: Routes = [
   },
   {
     path: 'chofer',
-    component: ChoferComponent
+    component: ChoferComponent,
+    canActivate:[AutenticacionService]
   },
   {
     path: 'cliente',
     component: ClienteComponent,
-    canActivate:[AuthService]
+    canActivate:[AutenticacionService]
   },
   {
     path: 'encargado',
-    component: EncargadoComponent
+    component: EncargadoComponent,
+    canActivate:[AutenticacionService]
   },
   {
     path: 'mapa',
-    component: MapaComponent
+    component: MapaComponent,
+    canActivate:[AutenticacionService]
   },
   {
     path: 'graficos',
-    component: GraficosComponent
+    component: GraficosComponent,
+    canActivate:[AutenticacionService]
   }
 ]
 
