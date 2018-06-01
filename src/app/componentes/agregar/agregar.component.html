@@ -70,6 +70,44 @@
     <label for="float-input">Modelo</label>
   </span>
   <br>
+
+  <div class="ui-float-label">
+    <p-inputMask [(ngModel)]="miVehiculo.anio" id="float-input" mask="2099"></p-inputMask>
+    <label for="float-input">Año</label>
+  </div>
+  <br>
+
+  <h4>Permitido Fumar?</h4>
+  <div class="ui-g" style="width:250px;margin-bottom:10px">
+    <div class="ui-g-12">
+      <p-radioButton value="1" label="Si" [(ngModel)]="miVehiculo.fumar"></p-radioButton>
+    </div>
+    <div class="ui-g-12">
+      <p-radioButton value="0" label="No" [(ngModel)]="miVehiculo.fumar"></p-radioButton>
+    </div>
+  </div>
+  <br>
+
+  <h4>Aire Acondicionado?</h4>
+  <div class="ui-g" style="width:250px;margin-bottom:10px">
+    <div class="ui-g-12">
+      <p-radioButton value="1" label="Si" [(ngModel)]="miVehiculo.aire"></p-radioButton>
+    </div>
+    <div class="ui-g-12">
+      <p-radioButton value="0" label="No" [(ngModel)]="miVehiculo.aire"></p-radioButton>
+    </div>
+  </div>
+  <br>
+
+  <h4>Vehiculo con baul?</h4>
+  <div class="ui-g" style="width:250px;margin-bottom:10px">
+    <div class="ui-g-12">
+      <p-radioButton value="1" label="Si" [(ngModel)]="miVehiculo.baul"></p-radioButton>
+    </div>
+    <div class="ui-g-12">
+      <p-radioButton value="0" label="No" [(ngModel)]="miVehiculo.baul"></p-radioButton>
+    </div>
+  </div>
   <br>
 
   <button pButton type="button" (click)="AgregarVehiculo()" class="ui-button-success" icon="fa-check" label="AGREGAR {{titulo}}"></button>

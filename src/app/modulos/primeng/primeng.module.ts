@@ -8,7 +8,8 @@ import { MenuItem } from 'primeng/api';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { DataTableModule } from 'primeng/datatable';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     InputMaskModule,
     InputTextModule,
     DataTableModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    RadioButtonModule
   ],
   exports: [
     CommonModule,
@@ -31,7 +33,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     InputMaskModule,
     InputTextModule,
     DataTableModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    RadioButtonModule
   ],
   declarations: []
 })

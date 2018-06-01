@@ -23,6 +23,11 @@ export class AgregarComponent implements OnInit {
     private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
 
     this.miObjeto.dni = 0;
+
+    this.miVehiculo.id_chofer = 0;
+    this.miVehiculo.fumar = 1;
+    this.miVehiculo.aire = 1;
+    this.miVehiculo.baul = 1;
   }
 
   ngOnInit() {
@@ -54,6 +59,8 @@ export class AgregarComponent implements OnInit {
   }
 
   AgregarVehiculo() {
+    this.miVehiculo.anio = parseInt(this.miVehiculo.anio.toString());
+    console.log(this.miVehiculo);
     this.miServicioVehiculo.agregarVehiculo(this.miVehiculo);
   }
 
