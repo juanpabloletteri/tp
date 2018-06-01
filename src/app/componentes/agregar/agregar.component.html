@@ -1,7 +1,8 @@
 <p>
   agregar works! {{titulo}}
 </p>
-<div>
+
+<div *ngIf="listado!=4">
 
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miObjeto.mail">
@@ -38,20 +39,40 @@
     <label for="float-input">Telefono</label>
   </div>
   <br>
-  
-  <span class="ui-float-label" *ngIf="listado==1" >
+
+  <span class="ui-float-label" *ngIf="listado==1">
     <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miObjeto.domicilio">
     <label for="float-input">Domicilio</label>
   </span>
 
-  <span class="ui-float-label" *ngIf="listado==2||listado==3" >
+  <span class="ui-float-label" *ngIf="listado==2||listado==3">
     <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miObjeto.legajo">
     <label for="float-input">Legajo</label>
   </span>
 
   <br>
   <br>
-  
-  <button pButton type="button" (click)="Agregar()" class="ui-button-success" icon="fa-check" label="Agregar"></button>
+
+  <button pButton type="button" (click)="Agregar()" class="ui-button-success" icon="fa-check" label="AGREGAR {{titulo}}"></button>
+
+</div>
+
+<div *ngIf="listado==4">
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miVehiculo.marca">
+    <label for="float-input">Marca</label>
+  </span>
+  <br>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="miVehiculo.modelo">
+    <label for="float-input">Modelo</label>
+  </span>
+  <br>
+  <br>
+
+  <button pButton type="button" (click)="AgregarVehiculo()" class="ui-button-success" icon="fa-check" label="AGREGAR {{titulo}}"></button>
+
 
 </div>

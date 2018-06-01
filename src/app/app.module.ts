@@ -33,9 +33,6 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
 import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AgregarViajeComponent } from './componentes/agregar-viaje/agregar-viaje.component';
-import { AgregarChoferComponent } from './componentes/agregar-chofer/agregar-chofer.component';
-import { AgregarClienteComponent } from './componentes/agregar-cliente/agregar-cliente.component';
-import { AgregarEncargadoComponent } from './componentes/agregar-encargado/agregar-encargado.component';
 import { AgregarVehiculoComponent } from './componentes/agregar-vehiculo/agregar-vehiculo.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { AgregarComponent } from './componentes/agregar/agregar.component';
@@ -84,9 +81,6 @@ const config: Routes = [
     GraficosComponent,
     LoginComponent,
     AgregarViajeComponent,
-    AgregarChoferComponent,
-    AgregarClienteComponent,
-    AgregarEncargadoComponent,
     AgregarVehiculoComponent,
     ListadoComponent,
     AgregarComponent

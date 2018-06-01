@@ -5,6 +5,9 @@ import { Objeto } from '../../clases/objeto';
 import { ClienteService } from '../../servicios/cliente.service';
 //import { EncargadoService } from '../../servicios/encargado.service';
 
+import { Vehiculo } from '../../clases/vehiculo';
+import { VehiculosService } from '../../servicios/vehiculos.service';
+
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
@@ -16,7 +19,9 @@ export class AgregarComponent implements OnInit {
   @Input() listado: number;
   titulo: string;
 
-  constructor(private miServicioCliente: ClienteService, private miObjeto: Objeto) {
+  constructor(private miServicioCliente: ClienteService, private miObjeto: Objeto,
+    private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
+
     this.miObjeto.dni = 0;
   }
 
@@ -43,11 +48,13 @@ export class AgregarComponent implements OnInit {
       // this.miServicioEncargado.agregarEncargado(this.miObjeto);
     }
 
-
-
     //ver si lo dejo o lo borro, envia un dato de mas a la base en caso de ingresar un cliente luego de un chofer
     //this.miObjeto.domicilio = null;
     //this.miObjeto.legajo = null;
+  }
+
+  AgregarVehiculo() {
+    this.miServicioVehiculo.agregarVehiculo(this.miVehiculo);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -65,7 +72,7 @@ export class AgregarComponent implements OnInit {
         this.miObjeto.tipo = 1;
         break;
       default:
-        this.titulo = '4';
+        this.titulo = 'VEHICULO';
         break;
     }
 
