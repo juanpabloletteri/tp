@@ -20,10 +20,10 @@ export class EncargadoComponent implements OnInit {
         label: 'Nuevo',
         icon: 'fa-edit',
         items: [
-          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.componente = 1 } },
-          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.componente = 2 } },
-          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.componente = 3 } },
-          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.componente = 4 } }
+          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.componente = 4, this.listado = 1 } },
+          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.componente = 4, this.listado = 2 } },
+          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.componente = 4, this.listado = 3 } },
+          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.componente = 4, this.listado = 4 } }
         ]
       },
       {

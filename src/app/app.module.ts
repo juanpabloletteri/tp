@@ -15,6 +15,7 @@ import { ViajesService } from './servicios/viajes.service';
 import { Cliente } from './clases/cliente';
 import { Vehiculo } from './clases/vehiculo';
 import { Viaje } from './clases/viaje';
+import { Objeto } from './clases/objeto';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -37,6 +38,7 @@ import { AgregarClienteComponent } from './componentes/agregar-cliente/agregar-c
 import { AgregarEncargadoComponent } from './componentes/agregar-encargado/agregar-encargado.component';
 import { AgregarVehiculoComponent } from './componentes/agregar-vehiculo/agregar-vehiculo.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
+import { AgregarComponent } from './componentes/agregar/agregar.component';
 
 
 //ROUTEO
@@ -48,27 +50,27 @@ const config: Routes = [
   {
     path: 'chofer',
     component: ChoferComponent,
-    canActivate:[AutenticacionService]
+    canActivate: [AutenticacionService]
   },
   {
     path: 'cliente',
     component: ClienteComponent,
-    canActivate:[AutenticacionService]
+    canActivate: [AutenticacionService]
   },
   {
     path: 'encargado',
     component: EncargadoComponent,
-    canActivate:[AutenticacionService]
+    canActivate: [AutenticacionService]
   },
   {
     path: 'mapa',
     component: MapaComponent,
-    canActivate:[AutenticacionService]
+    canActivate: [AutenticacionService]
   },
   {
     path: 'graficos',
     component: GraficosComponent,
-    canActivate:[AutenticacionService]
+    canActivate: [AutenticacionService]
   }
 ]
 
@@ -86,7 +88,8 @@ const config: Routes = [
     AgregarClienteComponent,
     AgregarEncargadoComponent,
     AgregarVehiculoComponent,
-    ListadoComponent
+    ListadoComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +108,8 @@ const config: Routes = [
     VehiculosService,
     Vehiculo,
     ViajesService,
-    Viaje
+    Viaje,
+    Objeto
     //UsuariosService,
     //Usuario
   ],
