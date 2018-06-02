@@ -3,6 +3,9 @@ import { ClienteService } from '../../servicios/cliente.service';
 import { ChoferService } from '../../servicios/chofer.service';
 import { VehiculosService } from '../../servicios/vehiculos.service';
 import { EncargadoService } from '../../servicios/encargado.service';
+
+import { Objeto } from '../../clases/objeto';
+
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -18,7 +21,7 @@ export class ListadoComponent implements OnInit {
   titulo: string;
 
   constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miServicioEncargado: EncargadoService,
-    private miServicioVehiculo: VehiculosService) { }
+    private miServicioVehiculo: VehiculosService, private miObjeto: Objeto) { }
 
   ngOnInit() {
 

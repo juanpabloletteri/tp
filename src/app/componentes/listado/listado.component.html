@@ -13,8 +13,12 @@
     <input #gb type="text" pInputText size="50" placeholder="Ingrese su busqueda">
   </div>
   <h3> {{titulo}} </h3>
-  <p-dataTable [value]="datosTabla" [rows]="10" [paginator]="true" [globalFilter]="gb" sortMode="multiple" #dt2>
+  <p-dataTable [value]="datosTabla" [rows]="10" [paginator]="true" [globalFilter]="gb" sortMode="multiple" [(selection)]="miObjeto"
+    #dt2>
     <p-header>Lista de {{titulo}} </p-header>
     <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
+    <p-column selectionMode="single" [header]="Modificar">Modificar</p-column>
   </p-dataTable>
 </div>
+
+{{miObjeto.id_usuario }} {{miObjeto.apellido}}
