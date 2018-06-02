@@ -7,12 +7,14 @@ import { MiHttpService } from './servicios/mi-http.service';
 import { HttpModule } from '@angular/http';
 //SERVICIOS
 import { ClienteService } from './servicios/cliente.service';
+import { ChoferService } from './servicios/chofer.service';
 import { VehiculosService } from './servicios/vehiculos.service';
 import { ViajesService } from './servicios/viajes.service';
 //import { UsuariosService } from './servicios/usuarios.service';
 //CLASES
 //import { Usuario } from './clases/usuario';
 import { Cliente } from './clases/cliente';
+import { Chofer } from './clases/chofer';
 import { Vehiculo } from './clases/vehiculo';
 import { Viaje } from './clases/viaje';
 import { Objeto } from './clases/objeto';
@@ -99,6 +101,8 @@ const config: Routes = [
     MiHttpService,
     ClienteService,
     Cliente,
+    ChoferService,
+    Chofer,
     VehiculosService,
     Vehiculo,
     ViajesService,

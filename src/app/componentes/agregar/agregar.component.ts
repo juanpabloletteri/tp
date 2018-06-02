@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
 import { Objeto } from '../../clases/objeto';
-//import { ChoferService } from '../../servicios/chofer.service';
+import { ChoferService } from '../../servicios/chofer.service';
 import { ClienteService } from '../../servicios/cliente.service';
 //import { EncargadoService } from '../../servicios/encargado.service';
 
@@ -19,7 +19,7 @@ export class AgregarComponent implements OnInit {
   @Input() listado: number;
   titulo: string;
 
-  constructor(private miServicioCliente: ClienteService, private miObjeto: Objeto,
+  constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miObjeto: Objeto,
     private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
 
     this.miObjeto.dni = 0;
@@ -47,7 +47,7 @@ export class AgregarComponent implements OnInit {
       this.miServicioCliente.agregarCliente(this.miObjeto);
     }
     else if (this.listado == 2) {
-      // this.miServicioChofer.agregarChofer(this.miObjeto);
+      this.miServicioChofer.agregarChofer(this.miObjeto);
     }
     else {
       // this.miServicioEncargado.agregarEncargado(this.miObjeto);

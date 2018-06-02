@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { ClienteService } from '../../servicios/cliente.service';
+import { ChoferService } from '../../servicios/chofer.service';
 import { VehiculosService } from '../../servicios/vehiculos.service';
 @Component({
   selector: 'app-listado',
@@ -15,7 +16,7 @@ export class ListadoComponent implements OnInit {
   datosTabla: any = null;
   titulo: string;
 
-  constructor(private miServicioCliente: ClienteService, private miServicioVehiculo: VehiculosService) { }
+  constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miServicioVehiculo: VehiculosService) { }
 
   ngOnInit() {
 
@@ -44,7 +45,14 @@ export class ListadoComponent implements OnInit {
 
       case 2:
         this.datosTabla = null;
-
+        //CHOFERES
+        //cargo en datosTabla a los clientes
+        this.miServicioChofer.traerTodosLosChoferes()
+          .then(data => {
+            this.datosTabla = data;
+          })
+        //nombro las columnas segun lo que quiero mostrar de clientes
+        //field es el nombre que trae el campo de la base
         this.titulo = 'CHOFERES';
         this.cols = [
           { field: 'nombre', header: 'Nombre' },
