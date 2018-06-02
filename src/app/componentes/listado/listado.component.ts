@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
 import { ClienteService } from '../../servicios/cliente.service';
 import { ChoferService } from '../../servicios/chofer.service';
 import { VehiculosService } from '../../servicios/vehiculos.service';
+import { EncargadoService } from '../../servicios/encargado.service';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -16,7 +17,8 @@ export class ListadoComponent implements OnInit {
   datosTabla: any = null;
   titulo: string;
 
-  constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miServicioVehiculo: VehiculosService) { }
+  constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miServicioEncargado: EncargadoService,
+    private miServicioVehiculo: VehiculosService) { }
 
   ngOnInit() {
 
@@ -63,8 +65,27 @@ export class ListadoComponent implements OnInit {
         ];
         break;
 
-      default:
+      case 3:
+        this.datosTabla = null;
+        //CHOFERES
+        //cargo en datosTabla a los clientes
+        this.miServicioEncargado.traerTodosLosEncargados()
+          .then(data => {
+            this.datosTabla = data;
+          })
+        //nombro las columnas segun lo que quiero mostrar de clientes
+        //field es el nombre que trae el campo de la base
+        this.titulo = 'ENCARGADOS';
+        this.cols = [
+          { field: 'nombre', header: 'Nombre' },
+          { field: 'apellido', header: 'Apellido' },
+          { field: 'telefono', header: 'Telefono' },
+          { field: 'dni', header: 'Dni' },
+          { field: 'legajo', header: 'Legajo' }
+        ];
+        break;
 
+      default:
         this.miServicioVehiculo.traerTodosLosVehiculos()
           .then(data => {
             this.datosTabla = data;

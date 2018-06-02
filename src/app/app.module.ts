@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 //SERVICIOS
 import { ClienteService } from './servicios/cliente.service';
 import { ChoferService } from './servicios/chofer.service';
+import { EncargadoService } from './servicios/encargado.service';
 import { VehiculosService } from './servicios/vehiculos.service';
 import { ViajesService } from './servicios/viajes.service';
 //import { UsuariosService } from './servicios/usuarios.service';
@@ -15,6 +16,7 @@ import { ViajesService } from './servicios/viajes.service';
 //import { Usuario } from './clases/usuario';
 import { Cliente } from './clases/cliente';
 import { Chofer } from './clases/chofer';
+import { Encargado } from './clases/encargado';
 import { Vehiculo } from './clases/vehiculo';
 import { Viaje } from './clases/viaje';
 import { Objeto } from './clases/objeto';
@@ -103,6 +105,8 @@ const config: Routes = [
     Cliente,
     ChoferService,
     Chofer,
+    EncargadoService,
+    Encargado,
     VehiculosService,
     Vehiculo,
     ViajesService,

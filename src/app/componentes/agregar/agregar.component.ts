@@ -3,7 +3,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
 import { Objeto } from '../../clases/objeto';
 import { ChoferService } from '../../servicios/chofer.service';
 import { ClienteService } from '../../servicios/cliente.service';
-//import { EncargadoService } from '../../servicios/encargado.service';
+import { EncargadoService } from '../../servicios/encargado.service';
 
 import { Vehiculo } from '../../clases/vehiculo';
 import { VehiculosService } from '../../servicios/vehiculos.service';
@@ -19,8 +19,8 @@ export class AgregarComponent implements OnInit {
   @Input() listado: number;
   titulo: string;
 
-  constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miObjeto: Objeto,
-    private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
+  constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miServicioEncargado: EncargadoService,
+    private miObjeto: Objeto, private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
 
     this.miObjeto.dni = 0;
 
@@ -49,8 +49,8 @@ export class AgregarComponent implements OnInit {
     else if (this.listado == 2) {
       this.miServicioChofer.agregarChofer(this.miObjeto);
     }
-    else {
-      // this.miServicioEncargado.agregarEncargado(this.miObjeto);
+    else if (this.listado == 3) {
+      this.miServicioEncargado.agregarEncargado(this.miObjeto);
     }
 
     //ver si lo dejo o lo borro, envia un dato de mas a la base en caso de ingresar un cliente luego de un chofer
