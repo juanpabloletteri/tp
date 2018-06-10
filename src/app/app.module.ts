@@ -38,6 +38,16 @@ import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { AgregarComponent } from './componentes/agregar/agregar.component';
+import { AltaClienteComponent } from './componentes/alta-cliente/alta-cliente.component';
+import { AltaVehiculoComponent } from './componentes/alta-vehiculo/alta-vehiculo.component';
+import { AltaChoferComponent } from './componentes/alta-chofer/alta-chofer.component';
+import { AltaEncargadoComponent } from './componentes/alta-encargado/alta-encargado.component';
+import { ListadoClientesComponent } from './componentes/listado-clientes/listado-clientes.component';
+import { ListadoVehiculosComponent } from './componentes/listado-vehiculos/listado-vehiculos.component';
+import { ListadoEncargadosComponent } from './componentes/listado-encargados/listado-encargados.component';
+import { ListadoChoferesComponent } from './componentes/listado-choferes/listado-choferes.component';
+import { AltaViajeComponent } from './componentes/alta-viaje/alta-viaje.component';
+import { ListadoViajesComponent } from './componentes/listado-viajes/listado-viajes.component';
 
 
 //ROUTEO
@@ -83,7 +93,17 @@ const config: Routes = [
     GraficosComponent,
     LoginComponent,
     ListadoComponent,
-    AgregarComponent
+    AgregarComponent,
+    AltaClienteComponent,
+    AltaVehiculoComponent,
+    AltaChoferComponent,
+    AltaEncargadoComponent,
+    ListadoClientesComponent,
+    ListadoVehiculosComponent,
+    ListadoEncargadosComponent,
+    ListadoChoferesComponent,
+    AltaViajeComponent,
+    ListadoViajesComponent
   ],
   imports: [
     BrowserModule,
