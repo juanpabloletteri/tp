@@ -36,8 +36,6 @@ import { EncargadoComponent } from './componentes/encargado/encargado.component'
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { AgregarViajeComponent } from './componentes/agregar-viaje/agregar-viaje.component';
-import { AgregarVehiculoComponent } from './componentes/agregar-vehiculo/agregar-vehiculo.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { AgregarComponent } from './componentes/agregar/agregar.component';
 
@@ -84,8 +82,6 @@ const config: Routes = [
     MapaComponent,
     GraficosComponent,
     LoginComponent,
-    AgregarViajeComponent,
-    AgregarVehiculoComponent,
     ListadoComponent,
     AgregarComponent
   ],

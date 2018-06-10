@@ -9,17 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  usuarios: any;
+
   mail: string;
   password: string;
   tipo: number;
 
   constructor(private miHttp: MiHttpService, public rute: Router) {
-    this.miHttp.httpGetP('/traerTodosLosUsuarios')
-      .then(data => {
-        this.usuarios = data;
-        console.log(data);
-      })
   }
 
   ngOnInit() {
