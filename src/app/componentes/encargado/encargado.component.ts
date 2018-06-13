@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encargado',
@@ -8,7 +9,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class EncargadoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public rute: Router) { }
 
   items: MenuItem[];
   componente: number;
@@ -20,10 +21,10 @@ export class EncargadoComponent implements OnInit {
         label: 'Nuevo',
         icon: 'fa-edit',
         items: [
-          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.componente = 4, this.listado = 1 } },
-          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.componente = 4, this.listado = 2 } },
-          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.componente = 4, this.listado = 3 } },
-          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.componente = 4, this.listado = 4 } }
+          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['alta/cliente']) } },
+          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.rute.navigate(['alta/chofer']) } },
+          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['alta/encargado']) } },
+          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['alta/vehiculo']) } },
         ]
       },
       {
