@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DataTableModule } from 'primeng/datatable';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     InputTextModule,
     DataTableModule,
     ProgressSpinnerModule,
-    RadioButtonModule
+    RadioButtonModule,
+    PanelModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     InputTextModule,
     DataTableModule,
     ProgressSpinnerModule,
-    RadioButtonModule
+    RadioButtonModule,
+    PanelModule
   ],
   declarations: []
 })

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //SERVICIO HTTP PERSONALIZADO
 import { MiHttpService } from './servicios/mi-http.service';
 import { HttpModule } from '@angular/http';
@@ -48,6 +48,7 @@ import { ListadoEncargadosComponent } from './componentes/listado-encargados/lis
 import { ListadoChoferesComponent } from './componentes/listado-choferes/listado-choferes.component';
 import { AltaViajeComponent } from './componentes/alta-viaje/alta-viaje.component';
 import { ListadoViajesComponent } from './componentes/listado-viajes/listado-viajes.component';
+import { componentFactoryName } from '@angular/compiler';
 
 
 //ROUTEO
@@ -55,6 +56,33 @@ const config: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'alta',
+    //component: LoginComponent,
+    //canActivate: [AutenticacionService],
+    children: [
+      {
+        path: 'chofer',
+        component: AltaChoferComponent,
+        canActivate: [AutenticacionService]
+      },
+      {
+        path: 'cliente',
+        component: AltaClienteComponent,
+        canActivate: [AutenticacionService]
+      },
+      {
+        path: 'encargado',
+        component: AltaEncargadoComponent,
+        canActivate: [AutenticacionService]
+      },
+      {
+        path: 'vehiculo',
+        component: AltaVehiculoComponent,
+        canActivate: [AutenticacionService]
+      }
+    ]
   },
   {
     path: 'chofer',
@@ -109,6 +137,7 @@ const config: Routes = [
     BrowserModule,
     PrimengModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBxJkyfYWlA2dETpe29fUe2CYIOVze1bPw'
     }),
