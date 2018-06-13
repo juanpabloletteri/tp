@@ -13,7 +13,6 @@ export class AltaChoferComponent implements OnInit {
 
   userform: FormGroup;
   description: string;
-  tipo: number = 0;
 
   constructor(private fb: FormBuilder, private miServicioChofer: ChoferService, private miChofer: Chofer) { }
 
@@ -37,7 +36,7 @@ export class AltaChoferComponent implements OnInit {
     this.miChofer.telefono = this.userform.value.telefono;
     this.miChofer.legajo = this.userform.value.legajo;
     this.miChofer.password = 'uberto' + this.miChofer.dni;
-    this.miChofer.tipo=2;
+    this.miChofer.tipo = 2;
 
     this.miServicioChofer.agregarChofer(this.miChofer)
       .then(data => {
@@ -47,8 +46,6 @@ export class AltaChoferComponent implements OnInit {
           'success'
         )
       })
-
-
   }
 
 }

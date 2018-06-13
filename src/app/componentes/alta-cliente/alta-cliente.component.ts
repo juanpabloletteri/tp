@@ -13,7 +13,6 @@ export class AltaClienteComponent implements OnInit {
 
   userform: FormGroup;
   description: string;
-  tipo: number = 0;
 
   constructor(private fb: FormBuilder, private miServicioCliente: ClienteService, private miCliente: Cliente) { }
 
