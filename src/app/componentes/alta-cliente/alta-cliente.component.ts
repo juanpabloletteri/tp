@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common';
 import { ClienteService } from '../../servicios/cliente.service';
 import { Cliente } from '../../clases/cliente';
 import swal from 'sweetalert2';
@@ -15,7 +14,7 @@ export class AltaClienteComponent implements OnInit {
   userform: FormGroup;
   description: string;
 
-  constructor(private fb: FormBuilder, private miServicioCliente: ClienteService, private miCliente: Cliente, private location: Location) { }
+  constructor(private fb: FormBuilder, private miServicioCliente: ClienteService, private miCliente: Cliente) { }
 
   ngOnInit() {
     this.userform = this.fb.group({
@@ -47,10 +46,6 @@ export class AltaClienteComponent implements OnInit {
           'success'
         )
       })
-  }
-
-  volver() {
-    this.location.back();
   }
 
 }

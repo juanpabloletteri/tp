@@ -58,9 +58,9 @@ const config: Routes = [
     component: LoginComponent
   },
   {
-    path: 'alta',
-    //component: LoginComponent,
-    //canActivate: [AutenticacionService],
+    path: 'encargado',
+    component: EncargadoComponent,
+    canActivate: [AutenticacionService],
     children: [
       {
         path: 'chofer',

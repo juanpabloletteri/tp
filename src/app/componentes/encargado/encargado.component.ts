@@ -21,10 +21,10 @@ export class EncargadoComponent implements OnInit {
         label: 'Nuevo',
         icon: 'fa-edit',
         items: [
-          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['alta/cliente']) } },
-          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.rute.navigate(['alta/chofer']) } },
-          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['alta/encargado']) } },
-          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['alta/vehiculo']) } },
+          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/cliente']) } },
+          { label: 'Chofer', icon: 'fa-mail-forward', command: (click) => { this.rute.navigate(['encargado/chofer']) } },
+          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/encargado']) } },
+          { label: 'Vehiculo', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/vehiculo']) } },
         ]
       },
       {

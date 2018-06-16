@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common';
 import { ChoferService } from '../../servicios/chofer.service';
 import { Chofer } from '../../clases/chofer';
 import swal from 'sweetalert2';
@@ -15,7 +14,7 @@ export class AltaChoferComponent implements OnInit {
   userform: FormGroup;
   description: string;
 
-  constructor(private fb: FormBuilder, private miServicioChofer: ChoferService, private miChofer: Chofer, private location: Location) { }
+  constructor(private fb: FormBuilder, private miServicioChofer: ChoferService, private miChofer: Chofer) { }
 
   ngOnInit() {
     this.userform = this.fb.group({
@@ -48,9 +47,6 @@ export class AltaChoferComponent implements OnInit {
         )
       })
   }
-  
-  volver() {
-    this.location.back();
-  }
+
 }
 
