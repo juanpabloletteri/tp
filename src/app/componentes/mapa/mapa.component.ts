@@ -18,7 +18,18 @@ export class MapaComponent implements OnInit {
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
-  public zoom: number;
+  public zoom: number = 14;
+
+  public latitude1: number;
+  public longitude1: number;
+
+  public latitude2: number;
+  public longitude2: number;
+
+  public lat: Number = 24.799448;
+  public lng: Number = 120.979021;
+
+  public dir = undefined;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -68,5 +79,22 @@ export class MapaComponent implements OnInit {
       });
     }
   }
-
+  origen() {
+    this.latitude1 = this.latitude;
+    this.longitude1 = this.longitude;
+    console.log("1. " + this.latitude1);
+    console.log("1. " + this.longitude1);
+  }
+  destino() {
+    this.latitude2 = this.latitude;
+    this.longitude2 = this.longitude;
+    console.log("2. " + this.latitude2);
+    console.log("2. " + this.longitude2);
+  }
+  calcular() {
+    this.dir = {
+      origin: { lat: this.latitude1, lng: this.longitude1 },
+      destination: { lat: this.latitude2, lng: this.longitude2 }
+    }
+  }
 }

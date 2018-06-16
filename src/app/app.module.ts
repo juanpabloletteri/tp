@@ -25,6 +25,7 @@ import { Objeto } from './clases/objeto';
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
 import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 //MODULO ROUTEO
 import { RouterModule, Route, Routes } from '@angular/router';
 //MODULO AUTENTICACION
@@ -143,6 +144,7 @@ const config: Routes = [
       apiKey: 'AIzaSyBxJkyfYWlA2dETpe29fUe2CYIOVze1bPw',
       libraries: ["places"]
     }),
+    AgmDirectionModule,
     RouterModule.forRoot(config),
     HttpModule
   ],
