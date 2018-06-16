@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MiHttpService } from '../../servicios/mi-http.service';
 import { Router } from '@angular/router';
-
+import { LoginService } from '../../servicios/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
   tipo: number;
 
-  constructor(private miHttp: MiHttpService, public rute: Router) {
+  constructor(private miHttp: MiHttpService, public rute: Router, private miServicioLogin: LoginService) {
   }
 
   ngOnInit() {
@@ -25,16 +25,28 @@ export class LoginComponent implements OnInit {
       case 0: {
         console.log("chofer");
         this.rute.navigate(['chofer']);
+        this.miServicioLogin.crearToken({ tipo: 'chofer' })
+          .then(data => {
+            localStorage.setItem('token', data);
+          })
         break;
       }
       case 1: {
         console.log("cliente");
         this.rute.navigate(['cliente']);
+        this.miServicioLogin.crearToken({ tipo: 'cliente' })
+          .then(data => {
+            localStorage.setItem('token', data);
+          })
         break;
       }
       default: {
         console.log("encargado");
         this.rute.navigate(['encargado']);
+        this.miServicioLogin.crearToken({ tipo: 'juuan' })
+          .then(data => {
+            localStorage.setItem('token', data);
+          })
         break;
       }
     }
