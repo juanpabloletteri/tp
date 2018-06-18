@@ -2,6 +2,7 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core'
 import { FormControl } from '@angular/forms';
 import { } from '@types/googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mapa',
@@ -26,10 +27,14 @@ export class MapaComponent implements OnInit {
   public latitude2: number;
   public longitude2: number;
 
-  public lat: Number = 24.799448;
-  public lng: Number = 120.979021;
+  public lat: Number;
+  public lng: Number;
 
-  public dir = undefined;
+  public dir: any = undefined;
+
+  public OriplaceGmaps: google.maps.places.PlaceResult;
+  public AuxPlaceGmaps: google.maps.places.PlaceResult;
+  public DestplaceGmaps: google.maps.places.PlaceResult;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -38,9 +43,9 @@ export class MapaComponent implements OnInit {
 
   ngOnInit() {
     //set google maps defaults
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    // this.zoom = 4;
+    //this.latitude = 39.8282;
+    // this.longitude = -98.5795;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -96,5 +101,35 @@ export class MapaComponent implements OnInit {
       origin: { lat: this.latitude1, lng: this.longitude1 },
       destination: { lat: this.latitude2, lng: this.longitude2 }
     }
+    //////////////////
+    let servicio = new google.maps.DistanceMatrixService();
+    let mode = google.maps.TravelMode['DRIVING'];
+    let origen = new google.maps.LatLng(this.latitude1, this.longitude1);
+    let destino = new google.maps.LatLng(this.latitude2, this.longitude2);
+    servicio.getDistanceMatrix({
+      origins: [origen],
+      destinations: [destino],
+      travelMode: mode,
+      unitSystem: google.maps.UnitSystem.METRIC,
+      durationInTraffic: true,
+      avoidHighways: false,
+      avoidTolls: false
+    }, this.response_data);
+    //////////////////
   }
+  response_data(responseDis, status) {
+    if (status !== google.maps.DistanceMatrixStatus.OK || status != "OK") {
+      console.log("error", status);
+    } else {
+
+      swal(
+        'Resultado:',
+        'Distancia: ' + responseDis.rows[0].elements[0].distance.text +
+        ' - Tiempo: ' + responseDis.rows[0].elements[0].duration.text,
+        'success'
+      )
+      console.log(responseDis);
+    }
+  }
+
 }
