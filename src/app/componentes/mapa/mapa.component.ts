@@ -89,12 +89,22 @@ export class MapaComponent implements OnInit {
     this.longitude1 = this.longitude;
     console.log("1. " + this.latitude1);
     console.log("1. " + this.longitude1);
+    swal(
+      'Inicio!',
+      'Direccion de inicio confirmada!',
+      'success'
+    )
   }
   destino() {
     this.latitude2 = this.latitude;
     this.longitude2 = this.longitude;
     console.log("2. " + this.latitude2);
     console.log("2. " + this.longitude2);
+    swal(
+      'Destino!',
+      'Direccion de destino confirmada!',
+      'success'
+    )
   }
   calcular() {
     this.dir = {
@@ -121,14 +131,42 @@ export class MapaComponent implements OnInit {
     if (status !== google.maps.DistanceMatrixStatus.OK || status != "OK") {
       console.log("error", status);
     } else {
+      //////////// SWEET ALERT ////////////////
+      let swalWithBootstrapButtons = (swal as any).mixin({
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: true,
+      })
+      swalWithBootstrapButtons({
+        position: 'top-end',
+        title: 'Datos del viaje: ',
+        text: 'Distancia: ' + responseDis.rows[0].elements[0].distance.text +
+          ' - Tiempo: ' + responseDis.rows[0].elements[0].duration.text,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, Confirmar viaje!',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          swalWithBootstrapButtons(
+            'Felicidades!',
+            'Su viaje ha sido confirmado',
+            'success'
+          )
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons(
+            'Cancelado',
+            'Su viaje ha sido cancelado',
+            'error'
+          )
+        }
+      })
+      ////////////////////////////////
 
-      swal(
-        'Resultado:',
-        'Distancia: ' + responseDis.rows[0].elements[0].distance.text +
-        ' - Tiempo: ' + responseDis.rows[0].elements[0].duration.text,
-        'success'
-      )
-      console.log(responseDis);
     }
   }
 

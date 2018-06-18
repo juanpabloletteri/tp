@@ -18,19 +18,16 @@
   <div>
     <button (click)="origen()">Origen</button>
     <br>
-    <button (click)="destino()"> Destino</button>
+    <button (click)="destino()" *ngIf="longitude1"> Destino</button>
     <br>
-    <button type="button" (click)="calcular()">Calcular</button>
+    <button type="button" (click)="calcular()" *ngIf="longitude2">Calcular</button>
+
   </div>
   <br>
   <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
     <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
 
-    <agm-direction *ngIf="dir" 
-    [origin]="dir.origin" [destination]="dir.destination">
-  </agm-direction>
+    <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
+    </agm-direction>
   </agm-map>
 </div>
-
-
-
