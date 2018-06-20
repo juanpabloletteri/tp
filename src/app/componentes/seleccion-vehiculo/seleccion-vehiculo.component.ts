@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculosService } from '../../servicios/vehiculos.service';
 import { Vehiculo } from '../../clases/vehiculo';
+import { ViajesService } from '../../servicios/viajes.service';
+import { ChoferService } from '../../servicios/chofer.service';
+import { Chofer } from '../../clases/chofer';
+
 @Component({
   selector: 'app-seleccion-vehiculo',
   templateUrl: './seleccion-vehiculo.component.html',
@@ -16,7 +20,8 @@ export class SeleccionVehiculoComponent implements OnInit {
   baul: any;
   vehiculoSeleccionado: Vehiculo;
 
-  constructor(private miServicioVehiculo: VehiculosService) { }
+  constructor(private miServicioVehiculo: VehiculosService, private miServicioViaje: ViajesService,
+    private miServicioChofer: ChoferService, private miChofer: Chofer) { }
 
   ngOnInit() {
     this.miServicioVehiculo.traerTodosLosVehiculos()
@@ -48,6 +53,20 @@ export class SeleccionVehiculoComponent implements OnInit {
       { label: 'Sin Baul', value: '0' },
       { label: 'Con Baul', value: '1' },
     ];
+  }
+
+  onRowSelect(event) {
+    this.miServicioChofer.traerChoferPorId(this.vehiculoSeleccionado.id_chofer)
+      .then(data => {
+        //console.log("data: " + data)
+        this.miChofer = data[0];
+      })
+    console.log(this.miChofer.nombre);
+  }
+
+  confirmarVehiculo() {
+    this.miServicioViaje.setIdVehiculo(this.vehiculoSeleccionado.id_vehiculo);
+    console.log("Id cargado: " + this.miServicioViaje.getIdVehiculo());
   }
 
 }

@@ -1,7 +1,9 @@
 <p>
   seleccion-vehiculo works!
 </p>
-<p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="vehiculoSeleccionado">
+<h3 class="first">Seleccion de Vehiculo</h3>
+<p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="vehiculoSeleccionado"
+  (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">
     <div style="text-align: right">
       <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -34,6 +36,12 @@
   </ng-template>
 </p-table>
 
-<div *ngIf="vehiculoSeleccionado" >
-Marca: {{vehiculoSeleccionado.marca}} - Modelo: {{vehiculoSeleccionado.modelo}} Año: {{vehiculoSeleccionado.anio}}
+<div *ngIf="vehiculoSeleccionado">
+  <h3>Marca: {{vehiculoSeleccionado.marca}} - Modelo: {{vehiculoSeleccionado.modelo}} Año: {{vehiculoSeleccionado.anio}}</h3>
+</div>
+
+<button (click)="confirmarVehiculo()">Confirmar Vehiculo</button>
+
+<div *ngIf="miChofer">
+  <h3> Nombre: {{miChofer.nombre}} - Apellido: {{miChofer.apellido}}</h3>
 </div>
