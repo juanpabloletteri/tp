@@ -52,6 +52,7 @@ import { ListadoViajesComponent } from './componentes/listado-viajes/listado-via
 import { componentFactoryName } from '@angular/compiler';
 import { NuevoViajeComponent } from './componentes/nuevo-viaje/nuevo-viaje.component';
 import { SeleccionVehiculoComponent } from './componentes/seleccion-vehiculo/seleccion-vehiculo.component';
+import { SinoPipe } from './pipes/sino.pipe';
 
 
 //ROUTEO
@@ -141,7 +142,8 @@ const config: Routes = [
     AltaViajeComponent,
     ListadoViajesComponent,
     NuevoViajeComponent,
-    SeleccionVehiculoComponent
+    SeleccionVehiculoComponent,
+    SinoPipe
   ],
   imports: [
     BrowserModule,
