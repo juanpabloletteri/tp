@@ -20,7 +20,6 @@ import { Chofer } from './clases/chofer';
 import { Encargado } from './clases/encargado';
 import { Vehiculo } from './clases/vehiculo';
 import { Viaje } from './clases/viaje';
-import { Objeto } from './clases/objeto';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -160,7 +159,6 @@ const config: Routes = [
     Vehiculo,
     ViajesService,
     Viaje,
-    Objeto,
     LoginService
     //UsuariosService,
     //Usuario

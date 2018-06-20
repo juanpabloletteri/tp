@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
-import { Objeto } from '../../clases/objeto';
 import { ChoferService } from '../../servicios/chofer.service';
 import { ClienteService } from '../../servicios/cliente.service';
 import { EncargadoService } from '../../servicios/encargado.service';
@@ -20,9 +19,9 @@ export class AgregarComponent implements OnInit {
   titulo: string;
 
   constructor(private miServicioCliente: ClienteService, private miServicioChofer: ChoferService, private miServicioEncargado: EncargadoService,
-    private miObjeto: Objeto, private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
+    private miVehiculo: Vehiculo, private miServicioVehiculo: VehiculosService) {
 
-    this.miObjeto.dni = 0;
+    
 
     this.miVehiculo.id_chofer = 0;
     this.miVehiculo.fumar = 1;
@@ -32,7 +31,7 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+/*
   Agregar() {
     //sacar los puntos (.) del dni y pasarlo a numero
     this.miObjeto.dni = parseInt(this.miObjeto.dni.toString().replace(/\./g, ''));
@@ -85,5 +84,5 @@ export class AgregarComponent implements OnInit {
 
 
   }
-
+*/
 }
