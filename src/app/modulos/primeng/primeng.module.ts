@@ -11,6 +11,8 @@ import { DataTableModule } from 'primeng/datatable';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { PanelModule } from 'primeng/panel';
     DataTableModule,
     ProgressSpinnerModule,
     RadioButtonModule,
-    PanelModule
+    PanelModule,
+    TableModule,
+    DropdownModule
   ],
   exports: [
     CommonModule,
@@ -37,7 +41,9 @@ import { PanelModule } from 'primeng/panel';
     DataTableModule,
     ProgressSpinnerModule,
     RadioButtonModule,
-    PanelModule
+    PanelModule,
+    TableModule,
+    DropdownModule
   ],
   declarations: []
 })
