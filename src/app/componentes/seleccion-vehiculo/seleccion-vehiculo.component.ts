@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculosService } from '../../servicios/vehiculos.service';
-
+import { Vehiculo } from '../../clases/vehiculo';
 @Component({
   selector: 'app-seleccion-vehiculo',
   templateUrl: './seleccion-vehiculo.component.html',
@@ -14,7 +14,7 @@ export class SeleccionVehiculoComponent implements OnInit {
   fumar: any;
   aire: any;
   baul: any;
-  vehiculoSeleccionado: any;
+  vehiculoSeleccionado: Vehiculo;
 
   constructor(private miServicioVehiculo: VehiculosService) { }
 
