@@ -50,6 +50,8 @@ import { ListadoChoferesComponent } from './componentes/listado-choferes/listado
 import { AltaViajeComponent } from './componentes/alta-viaje/alta-viaje.component';
 import { ListadoViajesComponent } from './componentes/listado-viajes/listado-viajes.component';
 import { componentFactoryName } from '@angular/compiler';
+import { NuevoViajeComponent } from './componentes/nuevo-viaje/nuevo-viaje.component';
+import { SeleccionVehiculoComponent } from './componentes/seleccion-vehiculo/seleccion-vehiculo.component';
 
 
 //ROUTEO
@@ -109,6 +111,11 @@ const config: Routes = [
     path: 'graficos',
     component: GraficosComponent,
     canActivate: [AutenticacionService]
+  },
+  {
+    path: 'nuevoViaje',
+    component: NuevoViajeComponent,
+    canActivate: [AutenticacionService]
   }
 ]
 
@@ -132,7 +139,9 @@ const config: Routes = [
     ListadoEncargadosComponent,
     ListadoChoferesComponent,
     AltaViajeComponent,
-    ListadoViajesComponent
+    ListadoViajesComponent,
+    NuevoViajeComponent,
+    SeleccionVehiculoComponent
   ],
   imports: [
     BrowserModule,
