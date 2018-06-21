@@ -31,25 +31,16 @@ export class EncargadoComponent implements OnInit {
         label: 'Listados',
         icon: 'fa-edit',
         items: [
-          { label: 'Clientes', icon: 'fa-mail-forward', command: (click) => { this.componente = 5, this.listado = 1 } },
-          { label: 'Choferes', icon: 'fa-mail-reply', command: (click) => { this.componente = 5, this.listado = 2 } },
-          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.componente = 5, this.listado = 3 } },
-          { label: 'Vehiculos', icon: 'fa-mail-reply', command: (click) => { this.componente = 5, this.listado = 4 } }
-        ]
-      },
-      {
-        label: 'Modificar',
-        icon: 'fa-edit',
-        items: [
-          { label: 'Cliente', icon: 'fa-mail-forward' },
-          { label: 'Chofer', icon: 'fa-mail-reply' },
-          { label: 'Vehiculo', icon: 'fa-mail-reply' }
+          { label: 'Clientes', icon: 'fa-mail-forward', command: (click) => { this.rute.navigate(['encargado/listaClientes']) } },
+          { label: 'Choferes', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaChoferes']) } },
+          { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaEncargados']) } },
+          { label: 'Vehiculos', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculos']) } }
         ]
       },
       {
         label: 'Nuevo Viaje',
         icon: 'fa-edit',
-        command: (click) => { this.componente = 10 }
+        command: (click) => { this.rute.navigate(['encargado/viaje']) }
       },
       {
         label: 'Nuevo Cliente',

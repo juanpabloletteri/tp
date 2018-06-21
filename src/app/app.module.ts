@@ -66,25 +66,44 @@ const config: Routes = [
     component: EncargadoComponent,
     canActivate: [AutenticacionService],
     children: [
+      ////////////ALTAS//////////
       {
         path: 'chofer',
         component: AltaChoferComponent,
-        canActivate: [AutenticacionService]
       },
       {
         path: 'cliente',
         component: AltaClienteComponent,
-        canActivate: [AutenticacionService]
       },
       {
         path: 'encargado',
         component: AltaEncargadoComponent,
-        canActivate: [AutenticacionService]
       },
       {
         path: 'vehiculo',
         component: AltaVehiculoComponent,
-        canActivate: [AutenticacionService]
+      },
+      ////////LISTAS//////////
+      {
+        path: 'listaChoferes',
+        component: ListadoChoferesComponent,
+      },
+      {
+        path: 'listaClientes',
+        component: ListadoClientesComponent,
+      },
+      {
+        path: 'listaEncargados',
+        component: ListadoEncargadosComponent,
+      },
+      {
+        path: 'listaVehiculos',
+        component: SeleccionVehiculoComponent,
+      },
+      /////////VIAJE//////////
+      {
+        path: 'viaje',
+        component: NuevoViajeComponent,
       }
     ]
   },
