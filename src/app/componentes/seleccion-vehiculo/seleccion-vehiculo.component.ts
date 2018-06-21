@@ -19,9 +19,10 @@ export class SeleccionVehiculoComponent implements OnInit {
   aire: any;
   baul: any;
   vehiculoSeleccionado: Vehiculo;
+  miChofer: Chofer = null;
 
   constructor(private miServicioVehiculo: VehiculosService, private miServicioViaje: ViajesService,
-    private miServicioChofer: ChoferService, private miChofer: Chofer) { }
+    private miServicioChofer: ChoferService) { }
 
   ngOnInit() {
     this.miServicioVehiculo.traerTodosLosVehiculos()

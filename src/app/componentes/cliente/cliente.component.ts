@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(public rute: Router) { }
 
-  ngOnInit() {
+  items: MenuItem[];
+  componente: number;
+  listado: number;
+
+ngOnInit() {
+    this.items = [
+      {
+        label: 'Nuevo Viaje',
+        icon: 'fa-edit',
+        command: (click) => { this.rute.navigate(['cliente/viaje']) }
+      },
+      {
+        label: 'Ver Viajes',
+        icon: 'fa-edit',
+        
+      },
+      {
+        label: 'Informes',
+        icon: 'fa-edit'
+      }
+
+    ];
   }
 
 }

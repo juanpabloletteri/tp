@@ -96,7 +96,14 @@ const config: Routes = [
   {
     path: 'cliente',
     component: ClienteComponent,
-    canActivate: [AutenticacionService]
+    canActivate: [AutenticacionService],
+    children: [
+      {
+        path: 'viaje',
+        component: NuevoViajeComponent,
+        canActivate: [AutenticacionService]
+      }
+    ]
   },
   {
     path: 'encargado',
