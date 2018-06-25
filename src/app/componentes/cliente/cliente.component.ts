@@ -25,7 +25,7 @@ ngOnInit() {
       {
         label: 'Ver Viajes',
         icon: 'fa-edit',
-        
+        command: (click) => { this.rute.navigate(['cliente/listaviaje']) }
       },
       {
         label: 'Informes',

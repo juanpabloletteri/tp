@@ -28,7 +28,7 @@ import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 //MODULO ROUTEO
 import { RouterModule, Route, Routes } from '@angular/router';
 //MODULO AUTENTICACION
-import { AutenticacionService } from './servicios/autenticacion.service';
+
 //MODULOS COMPONENTES
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
@@ -38,7 +38,6 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
 import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
-import { AgregarComponent } from './componentes/agregar/agregar.component';
 import { AltaClienteComponent } from './componentes/alta-cliente/alta-cliente.component';
 import { AltaVehiculoComponent } from './componentes/alta-vehiculo/alta-vehiculo.component';
 import { AltaChoferComponent } from './componentes/alta-chofer/alta-chofer.component';
@@ -64,7 +63,6 @@ const config: Routes = [
   {
     path: 'encargado',
     component: EncargadoComponent,
-    canActivate: [AutenticacionService],
     children: [
       ////////////ALTAS//////////
       {
@@ -110,39 +108,37 @@ const config: Routes = [
   {
     path: 'chofer',
     component: ChoferComponent,
-    canActivate: [AutenticacionService]
+
   },
   {
     path: 'cliente',
     component: ClienteComponent,
-    canActivate: [AutenticacionService],
     children: [
       {
         path: 'viaje',
-        component: NuevoViajeComponent,
-        canActivate: [AutenticacionService]
+        component: NuevoViajeComponent
+      },
+      {
+        path: 'listaviaje',
+        component: ListadoViajesComponent
       }
     ]
   },
   {
     path: 'encargado',
-    component: EncargadoComponent,
-    canActivate: [AutenticacionService]
+    component: EncargadoComponent
   },
   {
     path: 'mapa',
-    component: MapaComponent,
-    canActivate: [AutenticacionService]
+    component: MapaComponent
   },
   {
     path: 'graficos',
-    component: GraficosComponent,
-    canActivate: [AutenticacionService]
+    component: GraficosComponent
   },
   {
     path: 'nuevoViaje',
-    component: NuevoViajeComponent,
-    canActivate: [AutenticacionService]
+    component: NuevoViajeComponent
   }
 ]
 
@@ -156,7 +152,6 @@ const config: Routes = [
     GraficosComponent,
     LoginComponent,
     ListadoComponent,
-    AgregarComponent,
     AltaClienteComponent,
     AltaVehiculoComponent,
     AltaChoferComponent,
@@ -197,8 +192,6 @@ const config: Routes = [
     ViajesService,
     Viaje,
     LoginService
-    //UsuariosService,
-    //Usuario
   ],
   bootstrap: [AppComponent]
 })
