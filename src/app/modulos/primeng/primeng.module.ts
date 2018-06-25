@@ -14,6 +14,7 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     PanelModule,
     TableModule,
     DropdownModule,
-    SelectButtonModule
+    SelectButtonModule,
+    DialogModule
   ],
   exports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     PanelModule,
     TableModule,
     DropdownModule,
-    SelectButtonModule
+    SelectButtonModule,
+    DialogModule
   ],
   declarations: []
 })
