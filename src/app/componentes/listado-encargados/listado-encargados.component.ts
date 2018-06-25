@@ -13,6 +13,7 @@ export class ListadoEncargadosComponent implements OnInit {
   datosTabla: any = null;
   titulo: string;
   encargadoSeleccionado: Encargado = null;
+  display: boolean = false;
 
   constructor(private miEncargado: Encargado, private miServicioEncargado: EncargadoService) { }
 
@@ -28,19 +29,38 @@ export class ListadoEncargadosComponent implements OnInit {
     //field es el nombre que trae el campo de la base
     this.titulo = 'Listado de Encargados';
     this.cols = [
+      { field: 'legajo', header: 'Legajo' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
       { field: 'telefono', header: 'Telefono' },
-      { field: 'dni', header: 'Dni' },
-      { field: 'legajo', header: 'Legajo' }
+      { field: 'dni', header: 'Dni' }
     ];
   }
 
   onRowSelect(event) {
     console.log(this.encargadoSeleccionado.nombre);
+    this.display = true;
   }
 
   onRowUnselect(event) {
 
+  }
+
+  modificar() {
+    this.display = false;
+    console.log(this.encargadoSeleccionado);
+    this.miServicioEncargado.modificarEncargado(this.encargadoSeleccionado);
+  }
+
+  eliminar() {
+    this.display = false;
+    console.log(this.encargadoSeleccionado);
+    this.miServicioEncargado.borrarEncargado(this.encargadoSeleccionado.id_usuario);
+    //vuelvo a cargar los usuarios
+    this.datosTabla = null;
+    this.miServicioEncargado.traerTodosLosEncargados()
+      .then(data => {
+        this.datosTabla = data;
+      })
   }
 }

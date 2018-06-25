@@ -109,7 +109,7 @@ export class EncargadoService {
       })
   }
   borrarEncargado(data): Promise<any> {
-    return this.miHttp.httpPostP('borrarEncargado', data)
+    return this.miHttp.httpPostP('borrarEncargado', { id: data })
       .then(data => {
         console.log(data);
         return data;

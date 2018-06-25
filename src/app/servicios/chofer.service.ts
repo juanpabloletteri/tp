@@ -110,7 +110,7 @@ export class ChoferService {
       })
   }
   borrarChofer(data): Promise<any> {
-    return this.miHttp.httpPostP('borrarChofer', data)
+    return this.miHttp.httpPostP('borrarChofer', { id: data })
       .then(data => {
         console.log(data);
         return data;

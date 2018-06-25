@@ -110,7 +110,7 @@ export class ClienteService {
       })
   }
   borrarCliente(data): Promise<any> {
-    return this.miHttp.httpPostP('borrarCliente', data)
+    return this.miHttp.httpPostP('borrarCliente', { id: data })
       .then(data => {
         console.log(data);
         return data;

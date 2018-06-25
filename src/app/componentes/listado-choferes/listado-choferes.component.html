@@ -1,10 +1,14 @@
 <p>
   listado-choferes works!
 </p>
+
+<div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+<div class="ui-g-12 ui-md-8 ui-lg-8">
+
 <h3 class="first"> {{titulo}} </h3>
 
-<p-table #dt [columns]="cols" [value]="datosTabla" selectionMode="single" [(selection)]="choferSeleccionado" [paginator]="true" [rows]="10"
-(onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+<p-table #dt [columns]="cols" [value]="datosTabla" selectionMode="single" [(selection)]="choferSeleccionado" [paginator]="true"
+  [rows]="10" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
 
   <ng-template pTemplate="caption">
     <div style="text-align: right">
@@ -32,3 +36,57 @@
   </ng-template>
 
 </p-table>
+
+<p-dialog header="Menu" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70"
+  [baseZIndex]="10000" *ngIf="choferSeleccionado">
+
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-3">
+      Nombre:
+    </div>
+    <div class="ui-grid-col-6">
+      <input type="text" [(ngModel)]="choferSeleccionado.nombre">
+    </div>
+  </div>
+  <br>
+
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-3">
+      Apellido:
+    </div>
+    <div class="ui-grid-col-6">
+      <input type="text" [(ngModel)]="choferSeleccionado.apellido">
+    </div>
+  </div>
+  <br>
+
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-3">
+      DNI:
+    </div>
+    <div class="ui-grid-col-6">
+      <input type="number" [(ngModel)]="choferSeleccionado.dni">
+    </div>
+  </div>
+  <br>
+
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-3">
+      Telefono:
+    </div>
+    <div class="ui-grid-col-6">
+      <input type="number" [(ngModel)]="choferSeleccionado.telefono">
+    </div>
+  </div>
+  <br>
+
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="eliminar()" label="Eliminar" class="ui-button-danger"></button>
+    <button type="button" pButton icon="pi pi-check" (click)="modificar()" label="Modificar" class="ui-button-success"></button>
+  </p-footer>
+</p-dialog>
+
+</div>
+<div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+
+

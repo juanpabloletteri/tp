@@ -13,6 +13,7 @@ export class ListadoClientesComponent implements OnInit {
   datosTabla: any = null;
   titulo: string;
   clienteSeleccionado: Cliente = null;
+  display: boolean = false;
 
   constructor(private miCliente: Cliente, private miServicioCliente: ClienteService) { }
 
@@ -36,11 +37,30 @@ export class ListadoClientesComponent implements OnInit {
     ];
   }
 
-  onRowSelect(event) {
+   onRowSelect(event) {
     console.log(this.clienteSeleccionado.nombre);
+    this.display = true;
   }
 
   onRowUnselect(event) {
 
+  }
+
+  modificar() {
+    this.display = false;
+    console.log(this.clienteSeleccionado);
+    this.miServicioCliente.modificarCliente(this.clienteSeleccionado);
+  }
+
+  eliminar() {
+    this.display = false;
+    console.log(this.clienteSeleccionado);
+    this.miServicioCliente.borrarCliente(this.clienteSeleccionado.id_usuario);
+    //vuelvo a cargar los usuarios
+    this.datosTabla = null;
+    this.miServicioCliente.traerTodosLosClientes()
+      .then(data => {
+        this.datosTabla = data;
+      })
   }
 }
