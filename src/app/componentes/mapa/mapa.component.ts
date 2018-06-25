@@ -89,6 +89,7 @@ export class MapaComponent implements OnInit {
     this.longitude1 = this.longitude;
     console.log("1. " + this.latitude1);
     console.log("1. " + this.longitude1);
+    (<HTMLInputElement>document.getElementById('float-input')).value = " ";
     swal(
       'Inicio!',
       'Direccion de inicio confirmada!',
@@ -100,6 +101,7 @@ export class MapaComponent implements OnInit {
     this.longitude2 = this.longitude;
     console.log("2. " + this.latitude2);
     console.log("2. " + this.longitude2);
+    (<HTMLInputElement>document.getElementById('float-input')).value = " ";
     swal(
       'Destino!',
       'Direccion de destino confirmada!',
@@ -130,7 +132,7 @@ export class MapaComponent implements OnInit {
       } else {
         alert(responseDis.rows[0].elements[0].distance.text + responseDis.rows[0].elements[0].duration.text);
         console.log(responseDis);
-        
+
         console.log("DISTANCIA TEXTO: " + responseDis.rows[0].elements[0].distance.text);
         console.log("TIEMPO TEXTO: " + responseDis.rows[0].elements[0].duration.text);
         console.log("**");
