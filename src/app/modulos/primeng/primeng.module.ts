@@ -13,6 +13,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { DropdownModule } from 'primeng/dropdown';
     RadioButtonModule,
     PanelModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    SelectButtonModule
   ],
   exports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { DropdownModule } from 'primeng/dropdown';
     RadioButtonModule,
     PanelModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    SelectButtonModule
   ],
   declarations: []
 })
