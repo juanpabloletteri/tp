@@ -49,7 +49,6 @@ import { ListadoChoferesComponent } from './componentes/listado-choferes/listado
 import { AltaViajeComponent } from './componentes/alta-viaje/alta-viaje.component';
 import { ListadoViajesComponent } from './componentes/listado-viajes/listado-viajes.component';
 import { componentFactoryName } from '@angular/compiler';
-import { NuevoViajeComponent } from './componentes/nuevo-viaje/nuevo-viaje.component';
 import { SeleccionVehiculoComponent } from './componentes/seleccion-vehiculo/seleccion-vehiculo.component';
 import { SinoPipe } from './pipes/sino.pipe';
 
@@ -101,7 +100,7 @@ const config: Routes = [
       /////////VIAJE//////////
       {
         path: 'viaje',
-        component: NuevoViajeComponent,
+        component: AltaViajeComponent,
       }
     ]
   },
@@ -116,7 +115,7 @@ const config: Routes = [
     children: [
       {
         path: 'viaje',
-        component: NuevoViajeComponent
+        component: AltaViajeComponent
       },
       {
         path: 'listaviaje',
@@ -138,7 +137,7 @@ const config: Routes = [
   },
   {
     path: 'nuevoViaje',
-    component: NuevoViajeComponent
+    component: AltaViajeComponent
   }
 ]
 
@@ -162,7 +161,6 @@ const config: Routes = [
     ListadoChoferesComponent,
     AltaViajeComponent,
     ListadoViajesComponent,
-    NuevoViajeComponent,
     SeleccionVehiculoComponent,
     SinoPipe
   ],
