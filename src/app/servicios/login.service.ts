@@ -7,11 +7,10 @@ export class LoginService {
 
   constructor(private miHttp: MiHttpService) { }
 
-  crearToken(datos): Promise<any> {
-    return this.miHttp.httpPostP('crearToken', datos)
+  verificarusuario(data): Promise<any> {
+    return this.miHttp.httpPostP('login', data)
       .then(data => {
-        console.log(data)
-        return (data);
+        return data;
       })
   }
 

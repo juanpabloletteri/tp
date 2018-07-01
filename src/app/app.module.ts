@@ -28,7 +28,9 @@ import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 //MODULO ROUTEO
 import { RouterModule, Route, Routes } from '@angular/router';
 //MODULO AUTENTICACION
-
+import { AutEncargadoService } from '././servicios/autenticacion/aut-encargado.service';
+import { AutChoferService } from '././servicios/autenticacion/aut-chofer.service';
+import { AutClienteService } from '././servicios/autenticacion/aut-cliente.service';
 //MODULOS COMPONENTES
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
@@ -50,6 +52,7 @@ import { ListadoViajesComponent } from './componentes/listado-viajes/listado-via
 import { componentFactoryName } from '@angular/compiler';
 import { SeleccionVehiculoComponent } from './componentes/seleccion-vehiculo/seleccion-vehiculo.component';
 import { SinoPipe } from './pipes/sino.pipe';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 
 //ROUTEO
@@ -61,6 +64,7 @@ const config: Routes = [
   {
     path: 'encargado',
     component: EncargadoComponent,
+    //canActivate: [AutEncargadoService],
     children: [
       ////////////ALTAS//////////
       {
@@ -106,11 +110,12 @@ const config: Routes = [
   {
     path: 'chofer',
     component: ChoferComponent,
-
+    //canActivate: [AutChoferService],
   },
   {
     path: 'cliente',
     component: ClienteComponent,
+    //canActivate: [AutClienteService],
     children: [
       {
         path: 'viaje',
@@ -160,7 +165,8 @@ const config: Routes = [
     AltaViajeComponent,
     ListadoViajesComponent,
     SeleccionVehiculoComponent,
-    SinoPipe
+    SinoPipe,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -187,7 +193,10 @@ const config: Routes = [
     Vehiculo,
     ViajesService,
     Viaje,
-    LoginService
+    LoginService,
+    AutEncargadoService,
+    AutChoferService,
+    AutClienteService
   ],
   bootstrap: [AppComponent]
 })
