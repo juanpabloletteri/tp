@@ -18,7 +18,7 @@ export class SeleccionVehiculoComponent implements OnInit {
   fumar: any;
   aire: any;
   baul: any;
-  vehiculoSeleccionado: Vehiculo;
+  vehiculoSeleccionado: Vehiculo = null;
   miChofer: Chofer = null;
 
   constructor(private miServicioVehiculo: VehiculosService, private miServicioViaje: ViajesService,
@@ -57,17 +57,16 @@ export class SeleccionVehiculoComponent implements OnInit {
   }
 
   onRowSelect(event) {
+
     this.miServicioChofer.traerChoferPorId(this.vehiculoSeleccionado.id_chofer)
       .then(data => {
         //console.log("data: " + data)
         this.miChofer = data[0];
       })
-    console.log(this.miChofer.nombre);
-  }
-
-  confirmarVehiculo() {
+    //console.log(this.miChofer.nombre);
     this.miServicioViaje.setIdVehiculo(this.vehiculoSeleccionado.id_vehiculo);
-    console.log("Id cargado: " + this.miServicioViaje.getIdVehiculo());
+    this.miServicioViaje.setIdChofer(this.vehiculoSeleccionado.id_chofer);
+    //console.log("Id cargado: " + this.miServicioViaje.getIdVehiculo());
   }
 
 }

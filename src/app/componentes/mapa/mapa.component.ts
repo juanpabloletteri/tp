@@ -1,5 +1,7 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Viaje } from '../../clases/viaje';
+import { ViajesService } from '../../servicios/viajes.service';
 import { } from '@types/googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import swal from 'sweetalert2';
@@ -39,7 +41,8 @@ export class MapaComponent implements OnInit {
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,
+    private miViaje: Viaje, private miServicioViaje: ViajesService) { }
 
   ngOnInit() {
     //set google maps defaults
@@ -132,15 +135,27 @@ export class MapaComponent implements OnInit {
       } else {
         alert(responseDis.rows[0].elements[0].distance.text + responseDis.rows[0].elements[0].duration.text);
         console.log(responseDis);
-
         console.log("DISTANCIA TEXTO: " + responseDis.rows[0].elements[0].distance.text);
         console.log("TIEMPO TEXTO: " + responseDis.rows[0].elements[0].duration.text);
         console.log("**");
         console.log("DISTANCIA EN METROS: " + responseDis.rows[0].elements[0].distance.value);
         console.log("TIEMPO EN SEGUNDOS: " + responseDis.rows[0].elements[0].duration.value);
+        ////////////////
+        this.miServicioViaje.setLatitudInicio(this.latitude1);
+        this.miServicioViaje.setLongitudInicio(this.longitude1);
+
+        this.miServicioViaje.setLatitudDestino(this.latitude2);
+        this.miServicioViaje.setLongitudDestino(this.longitude2);
+
+        this.miServicioViaje.setInicio(responseDis.originAddresses[0]);
+        this.miServicioViaje.setDestino(responseDis.destinationAddresses[0]);
+
+        this.miServicioViaje.setDistancia(responseDis.rows[0].elements[0].distance.value);
+        //////////////////
       }
     });
     //////////////////
+
   }
   response_data(responseDis, status) {
     if (status !== google.maps.DistanceMatrixStatus.OK || status != "OK") {
