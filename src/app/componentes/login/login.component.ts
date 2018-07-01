@@ -17,6 +17,25 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor(private fb: FormBuilder, public rute: Router, private miServicioLogin: LoginService) {
+    try {
+      let data = localStorage.getItem('token');
+      //decodifico token
+      let payload = data.split('.')[1];
+      let pay2 = payload.replace('-', '+').replace('_', '/');
+      let datos = JSON.parse(atob(pay2));
+      //verifico donde redirijo
+      if (datos['data']['tipo'] == 1) {
+        this.rute.navigate(['encargado']);
+      }
+      else if (datos['data']['tipo'] == 2) {
+        this.rute.navigate(['chofer']);
+      }
+      else if (datos['data']['tipo'] == 3) {
+        this.rute.navigate(['cliente']);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   ngOnInit() {

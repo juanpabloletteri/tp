@@ -29,5 +29,8 @@ export class ChoferComponent implements OnInit {
 
     ];
   }
-
+  salir() {
+    localStorage.removeItem('token');
+    this.rute.navigate(['']);
+  }
 }

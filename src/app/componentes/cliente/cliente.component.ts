@@ -35,4 +35,9 @@ ngOnInit() {
     ];
   }
 
+  salir() {
+    localStorage.removeItem('token');
+    this.rute.navigate(['']);
+  }
+  
 }

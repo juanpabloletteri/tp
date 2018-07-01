@@ -50,4 +50,9 @@ export class EncargadoComponent implements OnInit {
     ];
   }
 
+  salir() {
+    localStorage.removeItem('token');
+    this.rute.navigate(['']);
+  }
+
 }
