@@ -1,6 +1,4 @@
-<p>
-  seleccion-vehiculo works!
-</p>
+
 <h3 class="first">Seleccion de Vehiculo</h3>
 <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="vehiculoSeleccionado"
   (onRowSelect)="onRowSelect($event)">
@@ -36,10 +34,6 @@
   </ng-template>
 </p-table>
 
-<div *ngIf="vehiculoSeleccionado">
-  <h3>Marca: {{vehiculoSeleccionado.marca}} - Modelo: {{vehiculoSeleccionado.modelo}} Año: {{vehiculoSeleccionado.anio}}</h3>
-</div>
-
 <div *ngIf="miChofer">
-  <h3> Nombre: {{miChofer.nombre}} - Apellido: {{miChofer.apellido}}</h3>
+  <h3> Chofer: {{miChofer.nombre}} {{miChofer.apellido}}</h3>
 </div>

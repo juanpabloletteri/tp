@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cliente } from '../../clases/cliente';
+import { ClienteService } from '../../servicios/cliente.service';
 import { Viaje } from '../../clases/viaje';
 import { ViajesService } from '../../servicios/viajes.service';
 import { DatosUsuarioService } from '../../servicios/datos-usuario.service';
@@ -13,13 +15,34 @@ import swal from 'sweetalert2';
 export class AltaViajeComponent implements OnInit {
 
   tipo: number;
+  cols: any[];
+  clienteSeleccionado: Cliente = null;
+  datosTabla: any = null;
 
-  constructor(public rute: Router, private miViaje: Viaje, private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService) {
+  constructor(public rute: Router, private miViaje: Viaje, private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService, private miServicioCliente: ClienteService) {
 
     this.tipo = this.datosUsuario.getTipo();
     ///cambiar despues
     this.miServicioViaje.setFormaPago('efectivo');
     this.miServicioViaje.setFecha('10/11/1981');
+    if (this.tipo == 1) {
+      this.cols = [
+        { field: 'nombre', header: 'Nombre' },
+        { field: 'apellido', header: 'Apellido' },
+        { field: 'telefono', header: 'Telefono' },
+        { field: 'dni', header: 'Dni' },
+        { field: 'domicilio', header: 'Domicilio' }
+      ];
+      this.miServicioCliente.traerTodosLosClientes()
+        .then(data => {
+          this.datosTabla = data;
+        })
+    }
+
+  }
+
+  onRowSelect(event) {
+    console.log(this.clienteSeleccionado.nombre);
   }
 
   ngOnInit() {
@@ -29,6 +52,7 @@ export class AltaViajeComponent implements OnInit {
     //SI ESTA ACTIVO EL ENCARGADO
     if (this.tipo == 1) {
       this.miServicioViaje.setIdEncargado(this.datosUsuario.getIdUsuario());
+      this.miServicioViaje.setIdCliente(this.clienteSeleccionado.id_usuario);
     }
     //SI EL TIPO ES CLIENTE
     else if (this.tipo == 3) {

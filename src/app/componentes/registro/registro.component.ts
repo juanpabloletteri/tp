@@ -75,4 +75,8 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  ingresar() {
+    this.rute.navigate(['']);
+  }
+
 }
