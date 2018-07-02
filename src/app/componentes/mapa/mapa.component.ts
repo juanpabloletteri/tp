@@ -133,7 +133,7 @@ export class MapaComponent implements OnInit {
       if (status !== google.maps.DistanceMatrixStatus.OK) {
         console.log("error", status);
       } else {
-        alert(responseDis.rows[0].elements[0].distance.text + responseDis.rows[0].elements[0].duration.text);
+        swal("Distancia: " + responseDis.rows[0].elements[0].distance.text + " - Tiempo: " + responseDis.rows[0].elements[0].duration.text);
         console.log(responseDis);
         console.log("DISTANCIA TEXTO: " + responseDis.rows[0].elements[0].distance.text);
         console.log("TIEMPO TEXTO: " + responseDis.rows[0].elements[0].duration.text);

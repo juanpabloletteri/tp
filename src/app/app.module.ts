@@ -65,7 +65,7 @@ const config: Routes = [
   {
     path: 'encargado',
     component: EncargadoComponent,
-    //canActivate: [AutEncargadoService],
+    canActivate: [AutEncargadoService],
     children: [
       ////////////ALTAS//////////
       {
@@ -111,12 +111,12 @@ const config: Routes = [
   {
     path: 'chofer',
     component: ChoferComponent,
-    //canActivate: [AutChoferService],
+    canActivate: [AutChoferService],
   },
   {
     path: 'cliente',
     component: ClienteComponent,
-    //canActivate: [AutClienteService],
+    canActivate: [AutClienteService],
     children: [
       {
         path: 'viaje',

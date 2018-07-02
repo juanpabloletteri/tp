@@ -32,7 +32,7 @@ export class DatosUsuarioService {
 
   /////////////////////////
   getIdUsuario() {
-    return this.mail;
+    return this.id_usuario;
   }
   getMail() {
     return this.mail;
