@@ -35,12 +35,9 @@ export class RegistroComponent implements OnInit {
       this.miCliente.nombre = this.userform.value.nombre;
       this.miCliente.apellido = this.userform.value.apellido;
       this.miCliente.mail = this.userform.value.mail;
-      //this.miCliente.dni = this.userform.value.dni;
-      //this.miCliente.telefono = this.userform.value.telefono;
-      //this.miCliente.domicilio = this.userform.value.domicilio;
-      this.miCliente.dni = 0;
-      this.miCliente.telefono = 0;
-      this.miCliente.domicilio = 'asd';
+      this.miCliente.dni = this.userform.value.dni;
+      this.miCliente.telefono = this.userform.value.telefono;
+      this.miCliente.domicilio = this.userform.value.domicilio;
       this.miCliente.password = 'uberto' + this.miCliente.dni;
       this.miCliente.tipo = 3;
 

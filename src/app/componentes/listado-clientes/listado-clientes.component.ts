@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../clases/cliente';
 import { ClienteService } from '../../servicios/cliente.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listado-clientes',
@@ -37,7 +38,7 @@ export class ListadoClientesComponent implements OnInit {
     ];
   }
 
-   onRowSelect(event) {
+  onRowSelect(event) {
     console.log(this.clienteSeleccionado.nombre);
     this.display = true;
   }
@@ -49,18 +50,25 @@ export class ListadoClientesComponent implements OnInit {
   modificar() {
     this.display = false;
     console.log(this.clienteSeleccionado);
-    this.miServicioCliente.modificarCliente(this.clienteSeleccionado);
+    this.miServicioCliente.modificarCliente(this.clienteSeleccionado)
+      .then(data => {
+        swal('Cliente modificado exitosamente');
+      })
   }
 
   eliminar() {
     this.display = false;
     console.log(this.clienteSeleccionado);
-    this.miServicioCliente.borrarCliente(this.clienteSeleccionado.id_usuario);
-    //vuelvo a cargar los usuarios
-    this.datosTabla = null;
-    this.miServicioCliente.traerTodosLosClientes()
+    this.miServicioCliente.borrarCliente(this.clienteSeleccionado.id_usuario)
       .then(data => {
-        this.datosTabla = data;
+        swal('Cliente eliminado exitosamente');
+        //vuelvo a cargar los usuarios
+        this.datosTabla = null;
+        this.miServicioCliente.traerTodosLosClientes()
+          .then(data => {
+            this.datosTabla = data;
+          })
       })
+
   }
 }
