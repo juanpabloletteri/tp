@@ -133,7 +133,9 @@ export class MapaComponent implements OnInit {
       if (status !== google.maps.DistanceMatrixStatus.OK) {
         console.log("error", status);
       } else {
-        swal("Distancia: " + responseDis.rows[0].elements[0].distance.text + " - Tiempo: " + responseDis.rows[0].elements[0].duration.text);
+        var distancia = responseDis.rows[0].elements[0].distance.value;
+        var costo = (distancia / 1000) * 15;
+        swal("Distancia: " + responseDis.rows[0].elements[0].distance.text + " - Tiempo: " + responseDis.rows[0].elements[0].duration.text + " - Costo del viaje: $" + costo);
         console.log(responseDis);
         console.log("DISTANCIA TEXTO: " + responseDis.rows[0].elements[0].distance.text);
         console.log("TIEMPO TEXTO: " + responseDis.rows[0].elements[0].duration.text);
@@ -151,6 +153,7 @@ export class MapaComponent implements OnInit {
         this.miServicioViaje.setDestino(responseDis.destinationAddresses[0]);
 
         this.miServicioViaje.setDistancia(responseDis.rows[0].elements[0].distance.value);
+        this.miServicioViaje.setCosto(costo);
         //////////////////
       }
     });

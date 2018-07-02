@@ -18,7 +18,6 @@ export class AltaViajeComponent implements OnInit {
 
     this.tipo = this.datosUsuario.getTipo();
     ///cambiar despues
-    this.miServicioViaje.setCosto(10);
     this.miServicioViaje.setFormaPago('efectivo');
     this.miServicioViaje.setFecha('10/11/1981');
   }
