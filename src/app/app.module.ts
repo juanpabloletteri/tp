@@ -54,6 +54,9 @@ import { componentFactoryName } from '@angular/compiler';
 import { SeleccionVehiculoComponent } from './componentes/seleccion-vehiculo/seleccion-vehiculo.component';
 import { SinoPipe } from './pipes/sino.pipe';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { ListadoViajesEncargadoComponent } from './componentes/listado-viajes-encargado/listado-viajes-encargado.component';
+import { ListadoViajesChoferComponent } from './componentes/listado-viajes-chofer/listado-viajes-chofer.component';
+import { ListadoViajesClienteComponent } from './componentes/listado-viajes-cliente/listado-viajes-cliente.component';
 
 
 //ROUTEO
@@ -105,14 +108,27 @@ const config: Routes = [
       {
         path: 'viaje',
         component: AltaViajeComponent,
+      },
+      {
+        path: 'viajes',
+        component: ListadoViajesEncargadoComponent,
       }
     ]
   },
+  ///////CHOFER///////////
   {
     path: 'chofer',
     component: ChoferComponent,
     canActivate: [AutChoferService],
+    children: [
+      {
+        path: 'viajes',
+        component: ListadoViajesChoferComponent
+      },
+    ],
   },
+
+  /////////CLIENTE//////////
   {
     path: 'cliente',
     component: ClienteComponent,
@@ -123,11 +139,12 @@ const config: Routes = [
         component: AltaViajeComponent
       },
       {
-        path: 'listaviaje',
-        component: ListadoViajesComponent
+        path: 'viajes',
+        component: ListadoViajesClienteComponent
       }
     ]
   },
+  ////////////////
   {
     path: 'registro',
     component: RegistroComponent
@@ -167,7 +184,10 @@ const config: Routes = [
     ListadoViajesComponent,
     SeleccionVehiculoComponent,
     SinoPipe,
-    RegistroComponent
+    RegistroComponent,
+    ListadoViajesEncargadoComponent,
+    ListadoViajesChoferComponent,
+    ListadoViajesClienteComponent
   ],
   imports: [
     BrowserModule,

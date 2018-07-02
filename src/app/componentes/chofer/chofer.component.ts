@@ -27,13 +27,8 @@ export class ChoferComponent implements OnInit {
       {
         label: 'Ver Viajes',
         icon: 'fa-edit',
-        command: (click) => { this.rute.navigate(['cliente/listaviaje']) }
-      },
-      {
-        label: 'Informes',
-        icon: 'fa-edit'
+        command: (click) => { this.rute.navigate(['chofer/viajes']) }
       }
-
     ];
   }
   salir() {
