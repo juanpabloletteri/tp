@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
+import { DatosUsuarioService } from '../../servicios/datos-usuario.service';
 
 @Component({
   selector: 'app-encargado',
@@ -9,11 +10,17 @@ import { Router } from '@angular/router';
 })
 export class EncargadoComponent implements OnInit {
 
-  constructor(public rute: Router) { }
-
   items: MenuItem[];
   componente: number;
   listado: number;
+
+  nombre: string;
+  apellido: string;
+
+  constructor(public rute: Router, datosUsuario: DatosUsuarioService) {
+    this.nombre = datosUsuario.getNombre();
+    this.apellido = datosUsuario.getApellido();
+  }
 
   ngOnInit() {
     this.items = [

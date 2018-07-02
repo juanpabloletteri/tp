@@ -2,9 +2,10 @@
   cliente works!
 </p>
 <p-menubar [model]="items">
-    <input type="text" pInputText placeholder="Buscar">
-    <button pButton label="Salir" (click)="salir()" icon="fa-sign-out"></button>
-  </p-menubar>
-  <br>
-  
-  <router-outlet></router-outlet>
+  Bienvenido {{nombre}} {{apellido}}
+  <input type="text" pInputText placeholder="Buscar">
+  <button pButton label="Salir" (click)="salir()" icon="fa-sign-out"></button>
+</p-menubar>
+<br>
+
+<router-outlet></router-outlet>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
+import { DatosUsuarioService } from '../../servicios/datos-usuario.service';
 
 @Component({
   selector: 'app-cliente',
@@ -9,13 +10,19 @@ import { Router } from '@angular/router';
 })
 export class ClienteComponent implements OnInit {
 
-  constructor(public rute: Router) { }
-
   items: MenuItem[];
   componente: number;
   listado: number;
 
-ngOnInit() {
+  nombre: string;
+  apellido: string;
+
+  constructor(public rute: Router, datosUsuario: DatosUsuarioService) {
+    this.nombre = datosUsuario.getNombre();
+    this.apellido = datosUsuario.getApellido();
+  }
+
+  ngOnInit() {
     this.items = [
       {
         label: 'Nuevo Viaje',
@@ -39,5 +46,5 @@ ngOnInit() {
     localStorage.removeItem('token');
     this.rute.navigate(['']);
   }
-  
+
 }

@@ -12,6 +12,7 @@ import { EncargadoService } from './servicios/encargado.service';
 import { VehiculosService } from './servicios/vehiculos.service';
 import { ViajesService } from './servicios/viajes.service';
 import { LoginService } from './servicios/login.service';
+import { DatosUsuarioService } from '././servicios/datos-usuario.service';
 //import { UsuariosService } from './servicios/usuarios.service';
 //CLASES
 //import { Usuario } from './clases/usuario';
@@ -189,6 +190,7 @@ const config: Routes = [
     Chofer,
     EncargadoService,
     Encargado,
+    DatosUsuarioService,
     VehiculosService,
     Vehiculo,
     ViajesService,
