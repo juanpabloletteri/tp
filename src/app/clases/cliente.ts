@@ -16,7 +16,7 @@ export class Cliente extends Usuario {
 
     id_cliente: number;
     id_usuario: number;
-    domicilio: number;
+    domicilio: string;
 
     constructor() { super() }
 }

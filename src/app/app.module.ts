@@ -129,8 +129,8 @@ const config: Routes = [
     ]
   },
   {
-    path: 'encargado',
-    component: EncargadoComponent
+    path: 'registro',
+    component: RegistroComponent
   },
   {
     path: 'mapa',
