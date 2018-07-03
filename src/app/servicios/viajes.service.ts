@@ -150,6 +150,13 @@ export class ViajesService {
         return data;
       })
   }
+  cambiarEstadoViaje(id, estado): Promise<any> {
+    return this.miHttp.httpPostP('cambiarEstadoViaje', { id: id, estado: estado })
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   borrarViaje(data): Promise<any> {
     return this.miHttp.httpPostP('borrarViaje', data)
       .then(data => {

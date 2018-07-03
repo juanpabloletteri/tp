@@ -60,12 +60,12 @@ export class SeleccionVehiculoComponent implements OnInit {
 
     this.miServicioChofer.traerChoferPorId(this.vehiculoSeleccionado.id_chofer)
       .then(data => {
-        //console.log("data: " + data)
+        console.log("data: " + data)
         this.miChofer = data[0];
       })
-    //console.log(this.miChofer.nombre);
+    console.log(this.miChofer.nombre);
     this.miServicioViaje.setIdVehiculo(this.vehiculoSeleccionado.id_vehiculo);
-    this.miServicioViaje.setIdChofer(this.vehiculoSeleccionado.id_chofer);
+    this.miServicioViaje.setIdChofer(this.miChofer.id_usuario);
     //console.log("Id cargado: " + this.miServicioViaje.getIdVehiculo());
   }
 
