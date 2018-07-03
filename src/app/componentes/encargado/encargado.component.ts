@@ -55,6 +55,16 @@ export class EncargadoComponent implements OnInit {
         command: (click) => { this.rute.navigate(['encargado/viajes']) }
       },
       {
+        label: 'Ver Viajes Por Clientes',
+        icon: 'fa-edit',
+        command: (click) => { this.rute.navigate(['encargado/viajesclientes']) }
+      },
+      {
+        label: 'Ver Viajes Por Choferes',
+        icon: 'fa-edit',
+        command: (click) => { this.rute.navigate(['encargado/viajeschoferes']) }
+      },
+      {
         label: 'Informes',
         icon: 'fa-edit'
       }

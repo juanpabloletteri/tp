@@ -115,6 +115,20 @@ export class ViajesService {
         return data;
       })
   }
+  traerTodosLosviajesConClientes(): Promise<any> {
+    return this.miHttp.httpGetP('traerTodosLosviajesConClientes')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
+  traerTodosLosviajesConChoferes(): Promise<any> {
+    return this.miHttp.httpGetP('traerTodosLosviajesConChoferes')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   agregarViaje(data): Promise<any> {
     return this.miHttp.httpPostP('agregarViaje', data)
       .then(data => {

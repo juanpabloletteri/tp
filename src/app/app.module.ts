@@ -59,6 +59,8 @@ import { ListadoViajesChoferComponent } from './componentes/listado-viajes-chofe
 import { ListadoViajesClienteComponent } from './componentes/listado-viajes-cliente/listado-viajes-cliente.component';
 import { EstadoPipe } from './pipes/estado.pipe';
 import { DistanciaPipe } from './pipes/distancia.pipe';
+import { ListadoViajesEncargadoClientesComponent } from './componentes/listado-viajes-encargado-clientes/listado-viajes-encargado-clientes.component';
+import { ListadoViajesEncargadoChoferesComponent } from './componentes/listado-viajes-encargado-choferes/listado-viajes-encargado-choferes.component';
 
 
 //ROUTEO
@@ -114,6 +116,14 @@ const config: Routes = [
       {
         path: 'viajes',
         component: ListadoViajesEncargadoComponent,
+      },
+      {
+        path: 'viajeschoferes',
+        component: ListadoViajesEncargadoChoferesComponent,
+      },
+      {
+        path: 'viajesclientes',
+        component: ListadoViajesEncargadoClientesComponent,
       }
     ]
   },
@@ -191,7 +201,9 @@ const config: Routes = [
     ListadoViajesChoferComponent,
     ListadoViajesClienteComponent,
     EstadoPipe,
-    DistanciaPipe
+    DistanciaPipe,
+    ListadoViajesEncargadoClientesComponent,
+    ListadoViajesEncargadoChoferesComponent
   ],
   imports: [
     BrowserModule,
