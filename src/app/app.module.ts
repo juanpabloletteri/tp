@@ -54,7 +54,6 @@ import { componentFactoryName } from '@angular/compiler';
 import { SeleccionVehiculoComponent } from './componentes/seleccion-vehiculo/seleccion-vehiculo.component';
 import { SinoPipe } from './pipes/sino.pipe';
 import { RegistroComponent } from './componentes/registro/registro.component';
-import { ListadoViajesEncargadoComponent } from './componentes/listado-viajes-encargado/listado-viajes-encargado.component';
 import { ListadoViajesChoferComponent } from './componentes/listado-viajes-chofer/listado-viajes-chofer.component';
 import { ListadoViajesClienteComponent } from './componentes/listado-viajes-cliente/listado-viajes-cliente.component';
 import { EstadoPipe } from './pipes/estado.pipe';
@@ -112,10 +111,6 @@ const config: Routes = [
       {
         path: 'viaje',
         component: AltaViajeComponent,
-      },
-      {
-        path: 'viajes',
-        component: ListadoViajesEncargadoComponent,
       },
       {
         path: 'viajeschoferes',
@@ -197,7 +192,6 @@ const config: Routes = [
     SeleccionVehiculoComponent,
     SinoPipe,
     RegistroComponent,
-    ListadoViajesEncargadoComponent,
     ListadoViajesChoferComponent,
     ListadoViajesClienteComponent,
     EstadoPipe,
