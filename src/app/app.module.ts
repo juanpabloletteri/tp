@@ -106,7 +106,7 @@ const config: Routes = [
       },
       {
         path: 'listaVehiculos',
-        component: SeleccionVehiculoComponent,
+        component: ListadoVehiculosComponent,
       },
       {
         path: 'listaVehiculosychoferes',
