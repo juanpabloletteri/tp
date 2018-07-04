@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { VehiculosService } from '../../servicios/vehiculos.service';
 import { Vehiculo } from '../../clases/vehiculo';
+import { ChoferService } from '../../servicios/chofer.service';
+import { Chofer } from '../../clases/chofer';
 import { SelectItem } from 'primeng/api';
 import swal from 'sweetalert2';
 
@@ -18,7 +20,11 @@ export class AltaVehiculoComponent implements OnInit {
   fumar: SelectItem[];
   baul: SelectItem[];
 
-  constructor(private fb: FormBuilder, private miServicioVehiculo: VehiculosService, private miVehiculo: Vehiculo) {
+  cols: any[];
+  datosTabla: any = null;
+  choferSeleccionado: Chofer = null;
+
+  constructor(private fb: FormBuilder, private miServicioVehiculo: VehiculosService, private miVehiculo: Vehiculo, private miServicioChofer: ChoferService, miChofer: Chofer) {
 
     this.aire = [
       { label: 'Con Aire', value: 1 },
@@ -44,6 +50,30 @@ export class AltaVehiculoComponent implements OnInit {
       'baul': new FormControl('', Validators.required)
     });
     this.userform.reset();
+    /////////////////
+    this.datosTabla = null;
+    //CHOFERES
+    //cargo en datosTabla a los clientes
+    this.miServicioChofer.traerTodosLosChoferesLibres()
+      .then(data => {
+        this.datosTabla = data;
+      })
+    //nombro las columnas segun lo que quiero mostrar de clientes
+    //field es el nombre que trae el campo de la base
+    this.cols = [
+      { field: 'legajo', header: 'Legajo' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'apellido', header: 'Apellido' },
+      { field: 'mail', header: 'Mail' }
+    ];
+  }
+
+  onRowSelect(event) {
+    console.log(this.choferSeleccionado.nombre);
+  }
+
+  onRowUnselect(event) {
+
   }
 
   onSubmit(value: string) {
@@ -54,17 +84,26 @@ export class AltaVehiculoComponent implements OnInit {
     this.miVehiculo.aire = this.userform.value.aire;
     this.miVehiculo.baul = this.userform.value.baul;
 
-    this.miVehiculo.id_chofer = 0;
+    if (this.choferSeleccionado == null) {
+      swal("Por favor seleccione un chofer para asignar al vehiculo")
+      return 1;
+    }
+    else {
+      /////////
+      this.miVehiculo.id_chofer = this.choferSeleccionado.id_chofer;
+      /////////
+      this.miServicioVehiculo.agregarVehiculo(this.miVehiculo)
+        .then(data => {
+          swal(
+            'Felicidades!',
+            'Vehiculo agregado correctamente',
+            'success'
+          )
+          this.userform.reset();
+        })
+    }
 
-    this.miServicioVehiculo.agregarVehiculo(this.miVehiculo)
-      .then(data => {
-        swal(
-          'Felicidades!',
-          'Vehiculo agregado correctamente',
-          'success'
-        )
-        this.userform.reset();
-      })
+
   }
 
 }

@@ -81,6 +81,13 @@ export class ChoferService {
         return data;
       })
   }
+  traerTodosLosChoferesLibres(): Promise<any> {
+    return this.miHttp.httpGetP('traerTodosLosChoferesLibres')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   agregarChofer(data): Promise<any> {
     return this.miHttp.httpPostP('agregarChofer', data)
       .then(data => {

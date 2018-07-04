@@ -65,6 +65,13 @@ export class VehiculosService {
         return data;
       })
   }
+  traerTodosLosVehiculosConChoferes(): Promise<any> {
+    return this.miHttp.httpGetP('traerTodosLosVehiculosConChoferes')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   agregarVehiculo(data): Promise<any> {
     return this.miHttp.httpPostP('agregarVehiculo', data)
       .then(data => {

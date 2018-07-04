@@ -41,7 +41,8 @@ export class EncargadoComponent implements OnInit {
           { label: 'Clientes', icon: 'fa-mail-forward', command: (click) => { this.rute.navigate(['encargado/listaClientes']) } },
           { label: 'Choferes', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaChoferes']) } },
           { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaEncargados']) } },
-          { label: 'Vehiculos', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculos']) } }
+          { label: 'Vehiculos', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculos']) } },
+           { label: 'Vehiculos y Choferes', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculosychoferes']) } }
         ]
       },
       {

@@ -15,6 +15,7 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DialogModule } from 'primeng/dialog';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { DialogModule } from 'primeng/dialog';
     TableModule,
     DropdownModule,
     SelectButtonModule,
-    DialogModule
+    DialogModule,
+    ProgressBarModule
   ],
   exports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { DialogModule } from 'primeng/dialog';
     TableModule,
     DropdownModule,
     SelectButtonModule,
-    DialogModule
+    DialogModule,
+    ProgressBarModule
   ],
   declarations: []
 })
