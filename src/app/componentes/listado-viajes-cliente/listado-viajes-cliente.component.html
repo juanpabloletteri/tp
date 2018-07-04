@@ -1,3 +1,79 @@
-<p>
-  listado-viajes-cliente works!
-</p>
+<div class="ui-g-12 ui-md-2 ui-lg-2">
+</div>
+<div class="ui-g-12 ui-md-8 ui-lg-8">
+
+  <div *ngIf="datosTabla==null">
+    <p-progressSpinner> </p-progressSpinner>
+    <h3>Cargando...</h3>
+  </div>
+
+  <h3 class="first">Viajes Pendientes</h3>
+  <p-table [value]="datosTabla">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Inicio</th>
+        <th>Destino</th>
+        <th>Distancia</th>
+        <th>Costo</th>
+        <th>Confirmar</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car>
+      <tr *ngIf="car.estado==0">
+        <td>{{car.inicio}}</td>
+        <td>{{car.destino}}</td>
+        <td>{{car.distancia|distancia}}</td>
+        <td>{{car.costo|currency}}</td>
+        <td>
+          <button (click)="cancelar(car.id_viaje)">Cancelar Viaje</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <br>
+  <br>
+  <!--//////////////////////////-->
+  <h3 class="first">Lista de Viajes</h3>
+  <p-table #dt [columns]="cols" [value]="datosTabla" selectionMode="single" [(selection)]="viajeSeleccionado" [paginator]="true"
+    [rows]="10" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+
+    <ng-template pTemplate="caption">
+      <div style="text-align: right">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input type="text" pInputText size="50" placeholder="Buscador" (input)="dt.filterGlobal($event.target.value, 'contains')"
+          style="width:auto">
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+        </th>
+      </tr>
+
+      <tr>
+        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+          <p-dropdown *ngSwitchCase="'estado'" [options]="estadoViaje" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+        </th>
+      </tr>
+
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]|estado}}
+        </td>
+      </tr>
+    </ng-template>
+
+
+    <ng-template pTemplate="summary">
+      <p *ngIf="viajeSeleccionado">There are {{viajeSeleccionado.id_viaje}} cars</p>
+    </ng-template>
+
+  </p-table>
+</div>
+<div class="ui-g-12 ui-md-2 ui-lg-2"></div>

@@ -157,22 +157,6 @@ const config: Routes = [
     ]
   },
   ////////////////
-  {
-    path: 'registro',
-    component: RegistroComponent
-  },
-  {
-    path: 'mapa',
-    component: MapaComponent
-  },
-  {
-    path: 'graficos',
-    component: GraficosComponent
-  },
-  {
-    path: 'nuevoViaje',
-    component: AltaViajeComponent
-  }
 ]
 
 @NgModule({

@@ -44,6 +44,7 @@ export class ListadoViajesEncargadoChoferesComponent implements OnInit {
       { label: 'Ver Todos', value: null },
       { label: 'Pendientes', value: '0' },
       { label: 'Realizados', value: '1' },
+      { label: 'Cancelados', value: '2' }
     ];
   }
 

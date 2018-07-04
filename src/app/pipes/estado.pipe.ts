@@ -12,6 +12,9 @@ export class EstadoPipe implements PipeTransform {
     else if (value == 1) {
       return "Realizado";
     }
+    else if (value == 2) {
+      return "Cancelado";
+    }
     else {
       return value;
     }

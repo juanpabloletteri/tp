@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Viaje } from '../../clases/viaje';
 import { ViajesService } from '../../servicios/viajes.service';
 import { DatosUsuarioService } from '../../servicios/datos-usuario.service';
@@ -17,7 +18,7 @@ export class ListadoViajesChoferComponent implements OnInit {
   viajeSeleccionado: Viaje;
   estadoViaje: any;
 
-  constructor(private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService) {
+  constructor(private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService, private rute: Router) {
 
     this.id_chofer = this.datosUsuario.getIdUsuario();
     this.miServicioViaje.traerViajesPorChofer(this.id_chofer)
@@ -39,6 +40,7 @@ export class ListadoViajesChoferComponent implements OnInit {
       { label: 'Ver Todos', value: null },
       { label: 'Pendientes', value: '0' },
       { label: 'Realizados', value: '1' },
+      { label: 'Cancelados', value: '2' }
     ];
   }
 
@@ -55,6 +57,8 @@ export class ListadoViajesChoferComponent implements OnInit {
     this.miServicioViaje.cambiarEstadoViaje(id_viaje, 1)
       .then(data => {
         console.log(data);
+        swal("Viaje realizado!");
+        this.rute.navigate(['chofer']);
       })
   }
 

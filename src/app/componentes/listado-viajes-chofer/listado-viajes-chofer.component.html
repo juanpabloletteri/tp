@@ -2,6 +2,10 @@
 </div>
 <div class="ui-g-12 ui-md-8 ui-lg-8">
 
+  <div *ngIf="datosTabla==null">
+    <p-progressSpinner> </p-progressSpinner>
+    <h3>Cargando...</h3>
+  </div>
 
   <h3 class="first">Viajes Pendientes</h3>
   <p-table [value]="datosTabla">
