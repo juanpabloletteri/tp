@@ -32,6 +32,7 @@ export class ListadoViajesEncargadoChoferesComponent implements OnInit {
 
   ngOnInit() {
     this.cols = [
+      { field: 'legajo', header: 'Legajo' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
       { field: 'mail', header: 'Mail' },

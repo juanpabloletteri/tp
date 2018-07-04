@@ -32,6 +32,7 @@ export class ListadoViajesEncargadoClientesComponent implements OnInit {
 
   ngOnInit() {
     this.cols = [
+      { field: 'id_cliente', header: 'N° Cliente' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
       { field: 'mail', header: 'Mail' },

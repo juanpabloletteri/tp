@@ -32,6 +32,10 @@
 
       <tr>
         <th *ngFor="let col of columns" [ngSwitch]="col.field">
+          <input *ngSwitchCase="'legajo'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          <input *ngSwitchCase="'nombre'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          <input *ngSwitchCase="'apellido'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          <input *ngSwitchCase="'mail'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
           <p-dropdown *ngSwitchCase="'estado'" [options]="estadoViaje" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
         </th>
       </tr>
