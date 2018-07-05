@@ -48,8 +48,8 @@ export class ListadoViajesClienteComponent implements OnInit {
   }
 
   enviar(unViaje) {
-
-    console.log("unviaje: " + unViaje);
+    console.log("unviaje: ");
+    console.log(unViaje);
     this.miServicioEncuesta.setIdViaje(unViaje.id_viaje);
     this.miServicioEncuesta.setIdChofer(unViaje.id_chofer);
     this.miServicioEncuesta.setIdVehiculo(unViaje.id_vehiculo);

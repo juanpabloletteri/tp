@@ -1,43 +1,81 @@
-<p>
-  encuesta works!
-</p>
 <div class="ui-g">
   <div class="ui-g-12 ui-md-2 ui-lg-2"></div>
   <div class="ui-g-12 ui-md-6 ui-lg-6">
 
-    <h3>Puntaje del Viaje: </h3>
-    <p-rating [(ngModel)]="miEncuesta.puntaje_viaje" [cancel]="false"></p-rating>{{miEncuesta.puntaje_viaje}}
-    <br>
+    <div *ngIf="!existe">
 
-    <h3>Puntaje del Chofer: </h3>
-    <p-rating [(ngModel)]="miEncuesta.puntaje_chofer" [cancel]="false"></p-rating>{{miEncuesta.puntaje_chofer}}
-    <br>
+      <h3>Puntaje del Viaje </h3>
+      <p-rating [(ngModel)]="miEncuesta.puntaje_viaje" [cancel]="false"></p-rating>{{miEncuesta.puntaje_viaje}}
+      <br>
 
-    <h3>Puntaje del Vehiculo: </h3>
-    <p-rating [(ngModel)]="miEncuesta.puntaje_vehiculo" [cancel]="false"></p-rating>{{miEncuesta.puntaje_vehiculo}}
-    <br>
+      <h3>Puntaje del Chofer </h3>
+      <p-rating [(ngModel)]="miEncuesta.puntaje_chofer" [cancel]="false"></p-rating>{{miEncuesta.puntaje_chofer}}
+      <br>
 
-    <h3>Cuan probable es que vuelva a viajar con nosotros?: </h3>
-    <p-rating [(ngModel)]="miEncuesta.pregunta1" [cancel]="false"></p-rating>{{miEncuesta.pregunta1}}
-    <br>
+      <h3>Puntaje del Vehiculo </h3>
+      <p-rating [(ngModel)]="miEncuesta.puntaje_vehiculo" [cancel]="false"></p-rating>{{miEncuesta.puntaje_vehiculo}}
+      <br>
 
-    <h3>Cuan probable es que recomiende la empresa a un amigo?: </h3>
-    <p-rating [(ngModel)]="miEncuesta.pregunta2" [cancel]="false"></p-rating>{{miEncuesta.pregunta2}}
-    <br>
+      <h3>Cuan probable es que vuelva a viajar con nosotros? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta1" [cancel]="false"></p-rating>{{miEncuesta.pregunta1}}
+      <br>
 
-    <h3>Cuan probable es que recomiende la empresa a un amigo?: </h3>
-    <p-rating [(ngModel)]="miEncuesta.pregunta3" [cancel]="false"></p-rating>{{miEncuesta.pregunta3}}
-    <br>
+      <h3>Cuan probable es que recomiende la empresa a un amigo? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta2" [cancel]="false"></p-rating>{{miEncuesta.pregunta2}}
+      <br>
 
-    <h3>Cuan probable es que recomiende la empresa a un amigo?: </h3>
-    <p-rating [(ngModel)]="miEncuesta.pregunta4" [cancel]="false"></p-rating>{{miEncuesta.pregunta4}}
-    <br>
+      <h3>Como calificaria la aplicacion celular de la remiseria? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta3" [cancel]="false"></p-rating>{{miEncuesta.pregunta3}}
+      <br>
 
-    <h3 class="first">Aqui sus sugerencias:</h3>
-    <textarea rows="10" cols="70" pInputTextarea placeholder="Sus comentarios son importantes para nosotros" [(ngModel)]="miEncuesta.observaciones"></textarea>
-    <br>
+      <h3>Como calificaria la pagina web de la remiseria? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta4" [cancel]="false"></p-rating>{{miEncuesta.pregunta4}}
+      <br>
 
-    <button pButton type="button" (click)="enviar()" icon="pi pi-check" iconPos="right" label="Enviar Resultados"></button>
+      <h3 class="first">Aqui sus sugerencias</h3>
+      <textarea rows="10" cols="70" pInputTextarea placeholder="Sus comentarios son importantes para nosotros" [(ngModel)]="miEncuesta.observaciones"></textarea>
+      <br>
+
+      <button pButton type="button" (click)="enviar()" icon="pi pi-check" iconPos="right" label="Enviar Resultados"></button>
+    </div>
+    <!--/////////////////////////////-->
+
+    <div *ngIf="existe">
+
+      <h3>Puntaje del Viaje </h3>
+      <p-rating [(ngModel)]="miEncuesta.puntaje_viaje" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.puntaje_viaje}}
+      <br>
+
+      <h3>Puntaje del Chofer </h3>
+      <p-rating [(ngModel)]="miEncuesta.puntaje_chofer" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.puntaje_chofer}}
+      <br>
+
+      <h3>Puntaje del Vehiculo </h3>
+      <p-rating [(ngModel)]="miEncuesta.puntaje_vehiculo" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.puntaje_vehiculo}}
+      <br>
+
+      <h3>Cuan probable es que vuelva a viajar con nosotros? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta1" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.pregunta1}}
+      <br>
+
+      <h3>Cuan probable es que recomiende la empresa a un amigo? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta2" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.pregunta2}}
+      <br>
+
+      <h3>Como calificaria la aplicacion celular de la remiseria? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta3" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.pregunta3}}
+      <br>
+
+      <h3>Como calificaria la pagina web de la remiseria? </h3>
+      <p-rating [(ngModel)]="miEncuesta.pregunta4" disabled="true" [cancel]="false"></p-rating>{{miEncuesta.pregunta4}}
+      <br>
+
+      <h3 class="first">Aqui sus sugerencias</h3>
+      <textarea rows="10" cols="70" pInputTextarea disabled="true" placeholder="Sus comentarios son importantes para nosotros"
+        [(ngModel)]="miEncuesta.observaciones"></textarea>
+      <br>
+
+    </div>
 
   </div>
   <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
