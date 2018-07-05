@@ -11,6 +11,7 @@ import { ChoferService } from './servicios/chofer.service';
 import { EncargadoService } from './servicios/encargado.service';
 import { VehiculosService } from './servicios/vehiculos.service';
 import { ViajesService } from './servicios/viajes.service';
+import { EncuestaService } from './servicios/encuesta.service';
 import { LoginService } from './servicios/login.service';
 import { DatosUsuarioService } from '././servicios/datos-usuario.service';
 //import { UsuariosService } from './servicios/usuarios.service';
@@ -21,6 +22,7 @@ import { Chofer } from './clases/chofer';
 import { Encargado } from './clases/encargado';
 import { Vehiculo } from './clases/vehiculo';
 import { Viaje } from './clases/viaje';
+import { Encuesta } from './clases/encuesta';
 //MODULO PRIME NG
 import { PrimengModule } from './modulos/primeng/primeng.module';
 //MODULO GOOGLE MAPS
@@ -61,6 +63,7 @@ import { DistanciaPipe } from './pipes/distancia.pipe';
 import { ListadoViajesEncargadoClientesComponent } from './componentes/listado-viajes-encargado-clientes/listado-viajes-encargado-clientes.component';
 import { ListadoViajesEncargadoChoferesComponent } from './componentes/listado-viajes-encargado-choferes/listado-viajes-encargado-choferes.component';
 import { ListadoVehiculosyChoferesComponent } from './componentes/listado-vehiculosy-choferes/listado-vehiculosy-choferes.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 
 //ROUTEO
@@ -153,6 +156,10 @@ const config: Routes = [
       {
         path: 'viajes',
         component: ListadoViajesClienteComponent
+      },
+      {
+        path: 'encuesta',
+        component: EncuestaComponent
       }
     ]
   },
@@ -187,7 +194,8 @@ const config: Routes = [
     DistanciaPipe,
     ListadoViajesEncargadoClientesComponent,
     ListadoViajesEncargadoChoferesComponent,
-    ListadoVehiculosyChoferesComponent
+    ListadoVehiculosyChoferesComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
@@ -215,6 +223,8 @@ const config: Routes = [
     Vehiculo,
     ViajesService,
     Viaje,
+    EncuestaService,
+    Encuesta,
     LoginService,
     AutEncargadoService,
     AutChoferService,

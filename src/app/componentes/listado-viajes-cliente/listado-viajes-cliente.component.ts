@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Viaje } from '../../clases/viaje';
 import { ViajesService } from '../../servicios/viajes.service';
 import { DatosUsuarioService } from '../../servicios/datos-usuario.service';
+import { EncuestaService } from '../../servicios/encuesta.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,7 @@ export class ListadoViajesClienteComponent implements OnInit {
   viajeSeleccionado: Viaje;
   estadoViaje: any;
 
-  constructor(private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService, private rute: Router) {
+  constructor(private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService, private rute: Router, private miServicioEncuesta: EncuestaService) {
 
     this.id_cliente = this.datosUsuario.getIdUsuario();
     this.miServicioViaje.traerViajesPorCliente(this.id_cliente)
@@ -29,13 +30,6 @@ export class ListadoViajesClienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cols = [
-      { field: 'inicio', header: 'Inicio' },
-      { field: 'destino', header: 'Destino' },
-      { field: 'distancia', header: 'Distancia' },
-      { field: 'costo', header: 'Costo' },
-      { field: 'estado', header: 'Estado' }
-    ];
     this.estadoViaje = [
       { label: 'Ver Todos', value: null },
       { label: 'Pendientes', value: '0' },
@@ -44,22 +38,23 @@ export class ListadoViajesClienteComponent implements OnInit {
     ];
   }
 
-  onRowSelect(event) {
-    console.log(this.viajeSeleccionado.id_viaje);
-    //this.display = true;
-  }
-
-  onRowUnselect(event) {
-
-  }
-
   cancelar(id_viaje) {
     this.miServicioViaje.cambiarEstadoViaje(id_viaje, 2)
       .then(data => {
-        console.log(data);
+        //console.log(data);
         swal("Viaje cancelado :(");
         this.rute.navigate(['cliente']);
       })
+  }
+
+  enviar(unViaje) {
+
+    console.log("unviaje: " + unViaje);
+    this.miServicioEncuesta.setIdViaje(unViaje.id_viaje);
+    this.miServicioEncuesta.setIdChofer(unViaje.id_chofer);
+    this.miServicioEncuesta.setIdVehiculo(unViaje.id_vehiculo);
+    this.rute.navigate(['cliente/encuesta']);
+
   }
 
 }
