@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //SERVICIO HTTP PERSONALIZADO
 import { MiHttpService } from './servicios/mi-http.service';
@@ -163,6 +163,10 @@ const config: Routes = [
       }
     ]
   },
+  {
+    path: 'registro',
+    component: RegistroComponent
+  }
   ////////////////
 ]
 
