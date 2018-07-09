@@ -39,7 +39,7 @@
       </ng-template>
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
+        <tr [pSelectableRow]="rowData" [ngClass]="rowData.tipo ==-3 ? 'bloqueado' : null">
           <td *ngFor="let col of columns">
             {{rowData[col.field]}}
           </td>

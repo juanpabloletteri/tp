@@ -27,6 +27,7 @@ export class AltaViajeComponent implements OnInit {
     this.miServicioViaje.setFecha('10/11/1981');
     if (this.tipo == 1) {
       this.cols = [
+        { field: 'id_cliente', header: 'N° cliente' },
         { field: 'nombre', header: 'Nombre' },
         { field: 'apellido', header: 'Apellido' },
         { field: 'telefono', header: 'Telefono' },

@@ -86,6 +86,13 @@ export class LoginComponent implements OnInit {
           else if (datos['data']['tipo'] == 3) {
             this.rute.navigate(['cliente']);
           }
+          else if (datos['data']['tipo'] == -2 || datos['data']['tipo'] == -3) {
+            swal({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Usted ha sido bloqueado, pongase en contacto con el administrador!',
+            })
+          }
         }
       })
   }
@@ -116,13 +123,13 @@ export class LoginComponent implements OnInit {
         let payload = data.split('.')[1];
         let pay2 = payload.replace('-', '+').replace('_', '/');
         let datos = JSON.parse(atob(pay2));
-         //cargo el servicio con los datos del usuario
-         this.datosUsuario.setIdUsuario(datos['data']['id_usuario']);
-         this.datosUsuario.setNombre(datos['data']['nombre']);
-         this.datosUsuario.setApellido(datos['data']['apellido']);
-         this.datosUsuario.setMail(datos['data']['mail']);
-         this.datosUsuario.setTipo(datos['data']['tipo']);
-         console.log(this.datosUsuario);
+        //cargo el servicio con los datos del usuario
+        this.datosUsuario.setIdUsuario(datos['data']['id_usuario']);
+        this.datosUsuario.setNombre(datos['data']['nombre']);
+        this.datosUsuario.setApellido(datos['data']['apellido']);
+        this.datosUsuario.setMail(datos['data']['mail']);
+        this.datosUsuario.setTipo(datos['data']['tipo']);
+        console.log(this.datosUsuario);
         //verifico donde redirijo
         if (datos['data']['tipo'] == 1) {
           this.rute.navigate(['encargado']);
