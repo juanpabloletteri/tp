@@ -109,6 +109,13 @@ export class ClienteService {
         return data;
       })
   }
+  cambiarEstadoCliente(id, estado): Promise<any> {
+    return this.miHttp.httpPostP('cambiarEstadoCliente', { id: id, estado: estado })
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   borrarCliente(data): Promise<any> {
     return this.miHttp.httpPostP('borrarCliente', { id: data })
       .then(data => {

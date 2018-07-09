@@ -30,6 +30,7 @@ export class ListadoClientesComponent implements OnInit {
     //field es el nombre que trae el campo de la base
     this.titulo = 'Listado de Clientes';
     this.cols = [
+      { field: 'id_cliente', header: 'N° cliente' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
       { field: 'telefono', header: 'Telefono' },
@@ -56,12 +57,12 @@ export class ListadoClientesComponent implements OnInit {
       })
   }
 
-  eliminar() {
+  bloquear() {
     this.display = false;
     console.log(this.clienteSeleccionado);
-    this.miServicioCliente.borrarCliente(this.clienteSeleccionado.id_usuario)
+    this.miServicioCliente.cambiarEstadoCliente(this.clienteSeleccionado.id_usuario, -3)
       .then(data => {
-        swal('Cliente eliminado exitosamente');
+        swal('Cliente bloqueado exitosamente');
         //vuelvo a cargar los usuarios
         this.datosTabla = null;
         this.miServicioCliente.traerTodosLosClientes()
@@ -69,6 +70,20 @@ export class ListadoClientesComponent implements OnInit {
             this.datosTabla = data;
           })
       })
+  }
 
+  desbloquear() {
+    this.display = false;
+    console.log(this.clienteSeleccionado);
+    this.miServicioCliente.cambiarEstadoCliente(this.clienteSeleccionado.id_usuario, 3)
+      .then(data => {
+        swal('Cliente desbloqueado exitosamente');
+        //vuelvo a cargar los usuarios
+        this.datosTabla = null;
+        this.miServicioCliente.traerTodosLosClientes()
+          .then(data => {
+            this.datosTabla = data;
+          })
+      })
   }
 }

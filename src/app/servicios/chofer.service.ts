@@ -116,6 +116,13 @@ export class ChoferService {
         return data;
       })
   }
+  cambiarEstadoChofer(id, estado): Promise<any> {
+    return this.miHttp.httpPostP('cambiarEstadoChofer', { id: id, estado: estado })
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   borrarChofer(data): Promise<any> {
     return this.miHttp.httpPostP('borrarChofer', { id: data })
       .then(data => {

@@ -1,5 +1,5 @@
-
-<div class="ui-g-12 ui-md-2 ui-lg-2"></div>
+<div class="ui-g-12 ui-md-2 ui-lg-2">
+</div>
 <div class="ui-g-12 ui-md-8 ui-lg-8">
 
   <h3 class="first"> {{titulo}} </h3>
@@ -25,7 +25,7 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <tr [pSelectableRow]="rowData">
+      <tr [pSelectableRow]="rowData" [ngClass]="rowData.tipo ==-2 ? 'bloqueado' : null">
         <td *ngFor="let col of columns">
           {{rowData[col.field]}}
         </td>
@@ -89,7 +89,8 @@
     <br>
 
     <p-footer>
-      <button type="button" pButton icon="pi pi-check" (click)="eliminar()" label="Eliminar" class="ui-button-danger"></button>
+      <button type="button" pButton icon="pi pi-check" (click)="desbloquear()" label="Desbloquear" class="ui-button-warning" *ngIf="choferSeleccionado.tipo==-2"></button>
+      <button type="button" pButton icon="pi pi-check" (click)="bloquear()" label="Bloquear" class="ui-button-danger" *ngIf="choferSeleccionado.tipo==2"></button>
       <button type="button" pButton icon="pi pi-check" (click)="modificar()" label="Modificar" class="ui-button-success"></button>
     </p-footer>
   </p-dialog>

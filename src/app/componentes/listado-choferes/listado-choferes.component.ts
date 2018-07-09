@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chofer } from '../../clases/chofer';
 import { ChoferService } from '../../servicios/chofer.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listado-choferes',
@@ -29,6 +30,7 @@ export class ListadoChoferesComponent implements OnInit {
     //field es el nombre que trae el campo de la base
     this.titulo = 'Listado de Choferes';
     this.cols = [
+      { field: 'id_chofer', header: 'N° chofer' },
       { field: 'legajo', header: 'Legajo' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
@@ -52,15 +54,33 @@ export class ListadoChoferesComponent implements OnInit {
     this.miServicioChofer.modificarChofer(this.choferSeleccionado);
   }
 
-  eliminar() {
+  bloquear() {
     this.display = false;
     console.log(this.choferSeleccionado);
-    this.miServicioChofer.borrarChofer(this.choferSeleccionado.id_usuario);
-    //vuelvo a cargar los usuarios
-    this.datosTabla = null;
-    this.miServicioChofer.traerTodosLosChoferes()
+    this.miServicioChofer.cambiarEstadoChofer(this.choferSeleccionado.id_usuario, -2)
       .then(data => {
-        this.datosTabla = data;
+        swal('Chofer bloqueado exitosamente');
+        //vuelvo a cargar los usuarios
+        this.datosTabla = null;
+        this.miServicioChofer.traerTodosLosChoferes()
+          .then(data => {
+            this.datosTabla = data;
+          })
+      })
+  }
+
+  desbloquear() {
+    this.display = false;
+    console.log(this.choferSeleccionado);
+    this.miServicioChofer.cambiarEstadoChofer(this.choferSeleccionado.id_usuario, 2)
+      .then(data => {
+        swal('Chofer desbloqueado exitosamente');
+        //vuelvo a cargar los usuarios
+        this.datosTabla = null;
+        this.miServicioChofer.traerTodosLosChoferes()
+          .then(data => {
+            this.datosTabla = data;
+          })
       })
   }
 }
