@@ -81,6 +81,13 @@ export class ChoferService {
         return data;
       })
   }
+  traerChoferesValidos(): Promise<any> {
+    return this.miHttp.httpGetP('traerChoferesValidos')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
   traerTodosLosChoferesLibres(): Promise<any> {
     return this.miHttp.httpGetP('traerTodosLosChoferesLibres')
       .then(data => {

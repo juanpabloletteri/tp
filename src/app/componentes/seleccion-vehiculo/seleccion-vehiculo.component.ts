@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculosService } from '../../servicios/vehiculos.service';
-import { Vehiculo } from '../../clases/vehiculo';
 import { ViajesService } from '../../servicios/viajes.service';
-import { ChoferService } from '../../servicios/chofer.service';
-import { Chofer } from '../../clases/chofer';
 
 @Component({
   selector: 'app-seleccion-vehiculo',
@@ -18,14 +15,12 @@ export class SeleccionVehiculoComponent implements OnInit {
   fumar: any;
   aire: any;
   baul: any;
-  vehiculoSeleccionado: Vehiculo = null;
-  miChofer: Chofer = null;
+  vehiculoSeleccionado: any = null;
 
-  constructor(private miServicioVehiculo: VehiculosService, private miServicioViaje: ViajesService,
-    private miServicioChofer: ChoferService) { }
+  constructor(private miServicioVehiculo: VehiculosService, private miServicioViaje: ViajesService) { }
 
   ngOnInit() {
-    this.miServicioVehiculo.traerTodosLosVehiculos()
+    this.miServicioVehiculo.traerTodosLosVehiculosConChoferes()
       .then(data => {
         this.datosTabla = data;
       })
@@ -57,16 +52,8 @@ export class SeleccionVehiculoComponent implements OnInit {
   }
 
   onRowSelect(event) {
-
-    this.miServicioChofer.traerChoferPorId(this.vehiculoSeleccionado.id_chofer)
-      .then(data => {
-        console.log("data: " + data)
-        this.miChofer = data[0];
-      })
-    console.log(this.miChofer.nombre);
     this.miServicioViaje.setIdVehiculo(this.vehiculoSeleccionado.id_vehiculo);
-    this.miServicioViaje.setIdChofer(this.miChofer.id_usuario);
-    //console.log("Id cargado: " + this.miServicioViaje.getIdVehiculo());
+    this.miServicioViaje.setIdChofer(this.vehiculoSeleccionado.id_usuario);
   }
 
 }

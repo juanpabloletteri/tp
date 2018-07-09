@@ -30,7 +30,6 @@ export class ListadoChoferesComponent implements OnInit {
     //field es el nombre que trae el campo de la base
     this.titulo = 'Listado de Choferes';
     this.cols = [
-      { field: 'id_chofer', header: 'N° chofer' },
       { field: 'legajo', header: 'Legajo' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
