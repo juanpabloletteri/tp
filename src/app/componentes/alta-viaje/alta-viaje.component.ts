@@ -19,12 +19,16 @@ export class AltaViajeComponent implements OnInit {
   clienteSeleccionado: Cliente = null;
   datosTabla: any = null;
 
+  date: Date;
+  invalidDates: Array<Date>;
+  es: any;
+
   constructor(public rute: Router, private miViaje: Viaje, private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService, private miServicioCliente: ClienteService) {
 
     this.tipo = this.datosUsuario.getTipo();
     ///cambiar despues
     this.miServicioViaje.setFormaPago('efectivo');
-    this.miServicioViaje.setFecha('10/11/1981');
+
     if (this.tipo == 1) {
       this.cols = [
         { field: 'id_cliente', header: 'N° cliente' },
@@ -47,6 +51,29 @@ export class AltaViajeComponent implements OnInit {
   }
 
   ngOnInit() {
+    //CALENDARIO
+    this.es = {
+      firstDayOfWeek: 1,
+      dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+      dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+      dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
+      monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+      monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+      today: 'Hoy',
+      clear: 'Borrar'
+    }
+
+    let today = new Date();
+    let month = today.getMonth();
+    let year = today.getFullYear();
+    let prevMonth = (month === 0) ? 11 : month - 1;
+    let prevYear = (prevMonth === 11) ? year - 1 : year;
+    let nextMonth = (month === 11) ? 0 : month + 1;
+    let nextYear = (nextMonth === 0) ? year + 1 : year;
+
+    let invalidDate = new Date();
+    invalidDate.setDate(today.getDate() - 1);
+    this.invalidDates = [today, invalidDate];
   }
 
   viaje() {
@@ -71,6 +98,16 @@ export class AltaViajeComponent implements OnInit {
     }
     else if (this.miServicioViaje.getIdCliente() == null) {
       swal("falta cliente");
+      return 1;
+    }
+    ///VERIFICACION FECHA
+    //asigno fecha de salida solicitada al servicio
+    this.miServicioViaje.setFechaSalida(this.date);
+    //establezco la fecha actual en la variable dia 
+    let dia: Date = new Date();
+    //verifico que la fecha seleccionada no sea anterior a la actual
+    if (this.miViaje.fecha_salida < dia) {
+      swal("La fecha seleccionada no puede ser anterior a la actual");
       return 1;
     }
 

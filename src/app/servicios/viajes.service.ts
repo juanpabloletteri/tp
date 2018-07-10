@@ -51,8 +51,11 @@ export class ViajesService {
   setFormaPago(data) {
     this.miViaje.forma_pago = data;
   }
-  setFecha(data) {
-    this.miViaje.fecha = data;
+  setFechaSalida(data) {
+    this.miViaje.fecha_salida = data;
+  }
+  setFechaLlegada(data) {
+    this.miViaje.fecha_llegada = data;
   }
   setEstado(data) {
     this.miViaje.estado = data;
@@ -100,8 +103,11 @@ export class ViajesService {
   getFormaPago() {
     return this.miViaje.forma_pago;
   }
-  getFecha() {
-    return this.miViaje.fecha;
+  getFechaSalida() {
+    return this.miViaje.fecha_salida;
+  }
+  getFechaLlegada() {
+    return this.miViaje.fecha_llegada;
   }
   getEstado() {
     return this.miViaje.estado;

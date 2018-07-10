@@ -18,7 +18,8 @@ export class Viaje {
     distancia: number;
     costo: number;
     forma_pago: number;
-    fecha: number;
+    fecha_salida: Date;
+    fecha_llegada: Date;
     estado: number;
 
 
