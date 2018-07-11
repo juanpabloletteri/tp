@@ -5,6 +5,7 @@ import { ClienteService } from '../../servicios/cliente.service';
 import { Viaje } from '../../clases/viaje';
 import { ViajesService } from '../../servicios/viajes.service';
 import { DatosUsuarioService } from '../../servicios/datos-usuario.service';
+import { SelectItem } from 'primeng/api';
 import swal from 'sweetalert2';
 
 @Component({
@@ -23,11 +24,12 @@ export class AltaViajeComponent implements OnInit {
   invalidDates: Array<Date>;
   es: any;
 
+  types: SelectItem[];
+  formaPago: number = null;
+
   constructor(public rute: Router, private miViaje: Viaje, private miServicioViaje: ViajesService, private datosUsuario: DatosUsuarioService, private miServicioCliente: ClienteService) {
 
     this.tipo = this.datosUsuario.getTipo();
-    ///cambiar despues
-    this.miServicioViaje.setFormaPago('efectivo');
 
     if (this.tipo == 1) {
       this.cols = [
@@ -74,6 +76,14 @@ export class AltaViajeComponent implements OnInit {
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
     this.invalidDates = [today, invalidDate];
+
+    //FORMA DE PAGO
+    this.types = [
+      { label: 'Paypal', value: '10', icon: 'fa fa-fw fa-cc-paypal' },
+      { label: 'Visa', value: '20', icon: 'fa fa-fw fa-cc-visa' },
+      { label: 'MasterCard', value: '30', icon: 'fa fa-fw fa-cc-mastercard' }
+    ];
+
   }
 
   viaje() {
@@ -108,6 +118,12 @@ export class AltaViajeComponent implements OnInit {
     //verifico que la fecha seleccionada no sea anterior a la actual
     if (this.miViaje.fecha_salida < dia) {
       swal("La fecha seleccionada no puede ser anterior a la actual");
+      return 1;
+    }
+    //FORMA DE PAGO
+    this.miServicioViaje.setFormaPago(this.formaPago);
+    if (this.formaPago == null) {
+      swal("Por favor seleccione una forma de pago");
       return 1;
     }
 

@@ -7,9 +7,16 @@
   <div class="ui-g-12 ui-md-6 ui-lg-6">
     <app-seleccion-vehiculo></app-seleccion-vehiculo>
 
-    <h3>Fecha y Horario</h3>
-    <p-calendar [(ngModel)]="date" [showTime]="true" tabindex="0" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="true"
-      showButtonBar="true" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2030"></p-calendar>
+    <div class="ui-g-6">
+      <h3 class="first">Fecha y Horario</h3>
+      <p-calendar [(ngModel)]="date" [showTime]="true" tabindex="0" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="true"
+        showButtonBar="true" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2030"></p-calendar>
+    </div>
+
+    <div class="ui-g-6">
+      <h3 class="first">Forma de pago</h3>
+      <p-selectButton [options]="types" [(ngModel)]="formaPago"></p-selectButton>
+    </div>
 
   </div>
   <div class="ui-g-12 ui-md-6 ui-lg-6">
