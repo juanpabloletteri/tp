@@ -79,7 +79,7 @@ export class AltaViajeComponent implements OnInit {
 
     //FORMA DE PAGO
     this.types = [
-      { label: 'Paypal', value: '10', icon: 'fa fa-fw fa-cc-paypal' },
+      { label: 'Efectivo', value: '10', icon: 'fa fa-money' },
       { label: 'Visa', value: '20', icon: 'fa fa-fw fa-cc-visa' },
       { label: 'MasterCard', value: '30', icon: 'fa fa-fw fa-cc-mastercard' }
     ];
@@ -91,6 +91,9 @@ export class AltaViajeComponent implements OnInit {
     if (this.tipo == 1) {
       this.miServicioViaje.setIdEncargado(this.datosUsuario.getIdUsuario());
       this.miServicioViaje.setIdCliente(this.clienteSeleccionado.id_usuario);
+      /*  if (!this.clienteSeleccionado) {
+          swal("Por favor seleccione cliente");
+        }*/
     }
     //SI EL TIPO ES CLIENTE
     else if (this.tipo == 3) {
@@ -99,22 +102,24 @@ export class AltaViajeComponent implements OnInit {
     }
     //VERIFICACION POR FALTA DE DATOS
     if (this.miServicioViaje.getDistancia() == null) {
-      swal("falta mapa");
+      swal("Por favor seleccione un origen y destino para el viaje");
       return 1;
     }
     else if (this.miServicioViaje.getIdVehiculo() == null) {
-      swal("falta vehiculo");
+      swal("Pro favor seleccione un vehiculo");
       return 1;
     }
-    else if (this.miServicioViaje.getIdCliente() == null) {
-      swal("falta cliente");
-      return 1;
-    }
+
     ///VERIFICACION FECHA
     //asigno fecha de salida solicitada al servicio
     this.miServicioViaje.setFechaSalida(this.date);
     //establezco la fecha actual en la variable dia 
     let dia: Date = new Date();
+    //verifico que se haya ingresado una fecha
+    if (!this.date) {
+      swal("Falta ingresar fecha del viaje");
+      return 1;
+    }
     //verifico que la fecha seleccionada no sea anterior a la actual
     if (this.miViaje.fecha_salida < dia) {
       swal("La fecha seleccionada no puede ser anterior a la actual");

@@ -1,5 +1,5 @@
-
-<h3 class="first">Seleccion de Vehiculo</h3>
+<h3 class="first">
+  <i class="fa fa-car" aria-hidden="true"></i>Seleccion de Vehiculo</h3>
 <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="vehiculoSeleccionado"
   (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">

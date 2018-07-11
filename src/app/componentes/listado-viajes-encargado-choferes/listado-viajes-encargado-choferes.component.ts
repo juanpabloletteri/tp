@@ -35,7 +35,7 @@ export class ListadoViajesEncargadoChoferesComponent implements OnInit {
       { field: 'legajo', header: 'Legajo' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
-      { field: 'mail', header: 'Mail' },
+      { field: 'fecha_salida', header: 'Fecha' },
       { field: 'inicio', header: 'Inicio' },
       { field: 'destino', header: 'Destino' },
       { field: 'estado', header: 'Estado' }
@@ -51,7 +51,7 @@ export class ListadoViajesEncargadoChoferesComponent implements OnInit {
   onRowSelect(event) {
     console.log(this.viajeSeleccionado.id_viaje);
     this.distancia = (this.viajeSeleccionado.distancia / 1000) + ' km';
-    this.costo = '$ ' + (this.viajeSeleccionado.costo); 
+    this.costo = '$ ' + (this.viajeSeleccionado.costo);
   }
 
   onRowUnselect(event) {

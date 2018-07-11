@@ -1,5 +1,5 @@
-
-<h1>{{ title }}</h1>
+<h1>
+  {{ title }}</h1>
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map:
@@ -8,24 +8,42 @@
 </agm-map> -->
 
 <div class="container">
-  <h3>Seleccion destino</h3>
+  <h3>
+    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+    Seleccion destino</h3>
   <div class="form-group">
-    <input id='float-input' placeholder="buscar direccion" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-      #search [formControl]="searchControl">
+    <input id='float-input' placeholder="buscar direccion" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+      class="form-control" #search [formControl]="searchControl">
   </div>
+
+  <div class="ui-g-2">
+    <button pButton type="button" (click)="origen()" label="Origen" class="ui-button-info" (click)="origen()"></button>
+  </div>
+  <div class="ui-g-2">
+    <button pButton type="button" (click)="destino()" label="Destino" (click)="destino()" *ngIf="longitude1"></button>
+  </div>
+  <div class="ui-g-2">
+    <button pButton type="button" (click)="calcular()" label="Calcular" class="ui-button-success" (click)="calcular()" *ngIf="longitude2"></button>
+  </div>
+  <div class="ui-g-6">
+  </div>
+
+  <div class="ui-g-12">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+
+      <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
+      </agm-direction>
+    </agm-map>
+  </div>
+  <!--
   <div>
     <button (click)="origen()">Origen</button>
     <br>
     <button (click)="destino()" *ngIf="longitude1"> Destino</button>
     <br>
     <button type="button" (click)="calcular()" *ngIf="longitude2">Calcular</button>
-
   </div>
-  <br>
-  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+-->
 
-    <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
-    </agm-direction>
-  </agm-map>
 </div>

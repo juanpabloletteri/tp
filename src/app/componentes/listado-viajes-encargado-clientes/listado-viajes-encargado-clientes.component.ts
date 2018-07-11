@@ -35,7 +35,7 @@ export class ListadoViajesEncargadoClientesComponent implements OnInit {
       { field: 'id_cliente', header: 'N° Cliente' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
-      { field: 'mail', header: 'Mail' },
+      { field: 'fecha_salida', header: 'Fecha' },
       { field: 'inicio', header: 'Inicio' },
       { field: 'destino', header: 'Destino' },
       { field: 'estado', header: 'Estado' }
