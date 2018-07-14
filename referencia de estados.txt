@@ -1,0 +1,16 @@
+USUARIOS
+
+1 encargado
+2 chofer
+-2 chofer bloqueado
+3 cliente
+-3 cliente bloqueado
+
+VIAJES
+
+0 pendiente
+-1 aceptado por chofer
+-2 en viaje
+-3 realizado terminado
+-4 cancelado por chofer
+-5 cancelado por usuario
