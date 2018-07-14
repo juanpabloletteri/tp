@@ -134,14 +134,34 @@ export class MapaComponent implements OnInit {
         console.log("error", status);
       } else {
         var distancia = responseDis.rows[0].elements[0].distance.value;
-        var costo = (distancia / 1000) * 15;
-        swal("Distancia: " + responseDis.rows[0].elements[0].distance.text + " - Tiempo: " + responseDis.rows[0].elements[0].duration.text + " - Costo del viaje: $" + costo);
-        console.log(responseDis);
+        var tiempo = responseDis.rows[0].elements[0].duration.value;
+        var mensaje;
+        var costo;
+        //CALCULO DE COSTO CON INCREMENTO POR HORA PICO (promedio 7m/s)
+        var relacion = distancia / tiempo;
+        if (distancia < 2) {
+          costo = 70;
+          mensaje = "Tarifa aplicada: Viaje minimo";
+        }
+        else {
+          if (relacion < 6) {
+            costo = 40 + (distancia / 1000) * 15;
+            costo = Math.round(costo);
+            mensaje = "Tarifa aplicada: Viaje estandar";
+          }
+          else {
+            costo = 40 + (distancia / 1000) * 20;
+            costo = Math.round(costo);
+            mensaje = "Tarifa aplicada: Sobrecarga hora pico";
+          }
+        }
+        swal("Distancia: " + responseDis.rows[0].elements[0].distance.text + " - Tiempo: " + responseDis.rows[0].elements[0].duration.text + " " + mensaje + " - Costo del viaje: $" + costo);
+        /*console.log(responseDis);
         console.log("DISTANCIA TEXTO: " + responseDis.rows[0].elements[0].distance.text);
         console.log("TIEMPO TEXTO: " + responseDis.rows[0].elements[0].duration.text);
         console.log("**");
         console.log("DISTANCIA EN METROS: " + responseDis.rows[0].elements[0].distance.value);
-        console.log("TIEMPO EN SEGUNDOS: " + responseDis.rows[0].elements[0].duration.value);
+        console.log("TIEMPO EN SEGUNDOS: " + responseDis.rows[0].elements[0].duration.value);*/
         ////////////////
         this.miServicioViaje.setLatitudInicio(this.latitude1);
         this.miServicioViaje.setLongitudInicio(this.longitude1);
