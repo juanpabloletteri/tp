@@ -43,8 +43,11 @@ export class ListadoViajesEncargadoClientesComponent implements OnInit {
     this.estadoViaje = [
       { label: 'Ver Todos', value: null },
       { label: 'Pendientes', value: '0' },
-      { label: 'Realizados', value: '1' },
-      { label: 'Cancelados', value: '2' }
+      { label: 'Aceptados', value: '-1' },
+      { label: 'En viaje', value: '-2' },
+      { label: 'Realizados', value: '-3' },
+      { label: 'Canc chofer', value: '-4' },
+      { label: 'Canc cliente', value: '-5' }
     ];
   }
 

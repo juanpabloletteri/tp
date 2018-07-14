@@ -144,7 +144,7 @@ export class MapaComponent implements OnInit {
           mensaje = "Tarifa aplicada: Viaje minimo";
         }
         else {
-          if (relacion < 6) {
+          if (relacion < 7) {
             costo = 40 + (distancia / 1000) * 15;
             costo = Math.round(costo);
             mensaje = "Tarifa aplicada: Viaje estandar";

@@ -20,7 +20,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr *ngIf="car.estado==0">
+        <tr *ngIf="car.estado==0||car.estado==-1">
           <td>{{car.inicio}}</td>
           <td>{{car.destino}}</td>
           <td>{{car.distancia|distancia}}</td>
@@ -46,7 +46,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr *ngIf="car.estado==1">
+        <tr *ngIf="car.estado==-3">
           <td>{{car.inicio}}</td>
           <td>{{car.destino}}</td>
           <td>{{car.distancia|distancia}}</td>
@@ -71,7 +71,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr *ngIf="car.estado==2">
+        <tr *ngIf="car.estado==-5">
           <td>{{car.inicio}}</td>
           <td>{{car.destino}}</td>
           <td>{{car.distancia|distancia}}</td>

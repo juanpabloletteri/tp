@@ -33,13 +33,16 @@ export class ListadoViajesClienteComponent implements OnInit {
     this.estadoViaje = [
       { label: 'Ver Todos', value: null },
       { label: 'Pendientes', value: '0' },
-      { label: 'Realizados', value: '1' },
-      { label: 'Cancelados', value: '2' }
+      { label: 'Aceptados', value: '-1' },
+      { label: 'En viaje', value: '-2' },
+      { label: 'Realizados', value: '-3' },
+      { label: 'Canc chofer', value: '-4' },
+      { label: 'Canc cliente', value: '-5' }
     ];
   }
 
   cancelar(id_viaje) {
-    this.miServicioViaje.cambiarEstadoViaje(id_viaje, 2)
+    this.miServicioViaje.cambiarEstadoViaje(id_viaje, -5)
       .then(data => {
         //console.log(data);
         swal("Viaje cancelado :(");
