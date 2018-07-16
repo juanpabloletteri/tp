@@ -21,6 +21,8 @@ export class ListadoViajesChoferComponent implements OnInit {
   viajeSeleccionado: Viaje;
   estadoViaje: any;
   visible: boolean = true;
+  inicio: string;
+  destino: string;
 
   public latitude: number;
   public longitude: number;
@@ -116,6 +118,9 @@ export class ListadoViajesChoferComponent implements OnInit {
     this.longitude1 = viaje.longitud_inicio;
     this.latitude2 = viaje.latitud_destino;
     this.longitude2 = viaje.longitud_destino;
+    this.inicio = viaje.inicio;
+    this.destino = viaje.destino;
+    
     this.calcular();
   }
 
