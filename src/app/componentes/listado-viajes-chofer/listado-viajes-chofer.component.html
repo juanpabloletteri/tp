@@ -11,8 +11,10 @@
   <p-table [value]="datosTabla">
     <ng-template pTemplate="header">
       <tr>
-        <th>Inicio</th>
-        <th>Destino</th>
+        <th>N° Cliente</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Mail</th>
         <th>Distancia</th>
         <th>Costo</th>
         <th>Acciones</th>
@@ -22,8 +24,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-car>
       <tr *ngIf="car.estado==0">
-        <td>{{car.inicio}}</td>
-        <td>{{car.destino}}</td>
+        <td>{{car.id_cliente}}</td>
+        <td>{{car.nombre}}</td>
+        <td>{{car.apellido}}</td>
+        <td>{{car.mail}}</td>
         <td>{{car.distancia|distancia}}</td>
         <td>{{car.costo|currency}}</td>
         <td>
@@ -45,8 +49,10 @@
   <p-table [value]="datosTabla">
     <ng-template pTemplate="header">
       <tr>
-        <th>Inicio</th>
-        <th>Destino</th>
+        <th>N° Cliente</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Mail</th>
         <th>Distancia</th>
         <th>Costo</th>
         <th>Acciones</th>
@@ -55,8 +61,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-car>
       <tr *ngIf="car.estado==-1">
-        <td>{{car.inicio}}</td>
-        <td>{{car.destino}}</td>
+        <td>{{car.id_cliente}}</td>
+        <td>{{car.nombre}}</td>
+        <td>{{car.apellido}}</td>
+        <td>{{car.mail}}</td>
         <td>{{car.distancia|distancia}}</td>
         <td>{{car.costo|currency}}</td>
         <td>
@@ -76,8 +84,10 @@
     <p-table [value]="datosTabla">
       <ng-template pTemplate="header">
         <tr>
-          <th>Inicio</th>
-          <th>Destino</th>
+          <th>N° Cliente</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Mail</th>
           <th>Distancia</th>
           <th>Costo</th>
           <th>Acciones</th>
@@ -85,12 +95,14 @@
       </ng-template>
       <ng-template pTemplate="body" let-car>
         <tr *ngIf="car.estado==-2">
-          <td>{{car.inicio}}</td>
-          <td>{{car.destino}}</td>
+          <td>{{car.id_cliente}}</td>
+          <td>{{car.nombre}}</td>
+          <td>{{car.apellido}}</td>
+          <td>{{car.mail}}</td>
           <td>{{car.distancia|distancia}}</td>
           <td>{{car.costo|currency}}</td>
           <td>
-            <button pButton type="button" (click)="confirmar(car.id_viaje)" class="ui-button-success" label="Confirmar Viaje"></button>
+            <button pButton type="button" (click)="confirmar(car.id_viaje)" class="ui-button-success" label="Finalizar Viaje"></button>
           </td>
         </tr>
       </ng-template>
@@ -121,6 +133,9 @@
 
         <tr>
           <th *ngFor="let col of columns" [ngSwitch]="col.field">
+            <input *ngSwitchCase="'id_cliente'" pInputText type="number" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+            <input *ngSwitchCase="'apellido'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+            <input *ngSwitchCase="'mail'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
             <p-dropdown *ngSwitchCase="'estado'" [options]="estadoViaje" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
           </th>
         </tr>
@@ -137,7 +152,7 @@
 
 
       <ng-template pTemplate="summary">
-        <p *ngIf="viajeSeleccionado">There are {{viajeSeleccionado.id_viaje}} cars</p>
+        <p *ngIf="viajeSeleccionado">Costo: {{viajeSeleccionado.costo|currency}} -- Distancia: {{viajeSeleccionado.distancia|distancia}} </p>
       </ng-template>
 
     </p-table>

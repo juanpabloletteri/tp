@@ -58,10 +58,14 @@ export class ListadoViajesChoferComponent implements OnInit {
 
   ngOnInit() {
     this.cols = [
+      { field: 'id_cliente', header: 'N° cliente' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'apellido', header: 'Apellido' },
+      { field: 'mail', header: 'Mail' },
       { field: 'inicio', header: 'Inicio' },
       { field: 'destino', header: 'Destino' },
-      { field: 'distancia', header: 'Distancia' },
       { field: 'costo', header: 'Costo' },
+      { field: 'distancia', header: 'Distancia (m)' },
       { field: 'estado', header: 'Estado' }
     ];
     this.estadoViaje = [
