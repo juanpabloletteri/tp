@@ -19,6 +19,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { RatingModule } from 'primeng/rating';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { CalendarModule } from 'primeng/calendar';
     ProgressBarModule,
     RatingModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    CardModule
   ],
   exports: [
     CommonModule,
@@ -61,7 +63,8 @@ import { CalendarModule } from 'primeng/calendar';
     ProgressBarModule,
     RatingModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    CardModule
   ],
   declarations: []
 })

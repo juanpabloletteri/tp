@@ -192,4 +192,18 @@ export class ViajesService {
         return data;
       })
   }
+  traerMetrosRecorridos(): Promise<any> {
+    return this.miHttp.httpGetP('traerMetrosRecorridos')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
+  traerDineroGanado(): Promise<any> {
+    return this.miHttp.httpGetP('traerDineroGanado')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
 }

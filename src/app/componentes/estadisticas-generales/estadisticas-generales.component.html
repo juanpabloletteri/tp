@@ -1,4 +1,18 @@
-<button pButton type="button" (click)="graficar()" label="Estado actual" class="ui-button-success">
-</button>
+<div class="ui-g-12 ui-md-3 ui-lg-3">
+    <p-card title="Resumen Global" subtitle="Ganancias" [style]="{width: '360px'}" styleClass="ui-card-shadow">
+        <p-header>
+            <img src="Card" src="assets/img/uberto.jpg">
+        </p-header>
+        <div>
+            <h3>Total de KM recorridos: {{distancia|distancia}} </h3>
+            <h3>Total de dinero recaudado: {{dinero|currency}} </h3>
+        </div>
+        <p-footer>
+            <button pButton type="button" (click)="graficar()" label="Grafico de viajes" icon="pi pi-check" style="margin-right: .25em" class="ui-button-success"></button>
+        </p-footer>
+    </p-card>
+</div>
 
-<p-chart type="pie" [data]="datosGrafico1" *ngIf="grafico1"></p-chart>
+<div class="ui-g-12 ui-md-9 ui-lg-9">
+    <p-chart type="pie" [data]="datosGrafico1"></p-chart>
+</div>

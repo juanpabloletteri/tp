@@ -8,20 +8,31 @@ import { ViajesService } from '../../servicios/viajes.service';
 })
 export class EstadisticasGeneralesComponent implements OnInit {
 
-  grafico1: boolean = false;
-  grafico2: boolean = false;
-  grafico3: boolean = false;
-
   datosGrafico1: any;
 
   viajesTotales: any;
   viajes: string[] = [];
 
-  constructor(private miServicioViaje: ViajesService) {
+  distancia: number;
+  dinero: number;
 
+  constructor(private miServicioViaje: ViajesService) {
+    //traigo todos los viajes separados por cantidad
     this.miServicioViaje.traerCantidadDeViajes()
       .then(data => {
         this.viajesTotales = data;
+      })
+    //traigo el total de metros recorridos (consulta realizada sobre viajes terminados)
+    this.miServicioViaje.traerMetrosRecorridos()
+      .then(data => {
+        this.distancia = data[0]['distancia'];
+        console.log(data)
+      })
+    //traigo el total de dinero ganado (consulta realizada sobre viajes terminados)
+    this.miServicioViaje.traerDineroGanado()
+      .then(data => {
+        this.dinero = data[0]['costo'];
+        console.log(data)
       })
   }
 
@@ -29,8 +40,6 @@ export class EstadisticasGeneralesComponent implements OnInit {
   }
 
   graficar() {
-    //variables de ocultacion
-    this.grafico1 = true;
     //extraigo solo la cantidad
     this.viajesTotales.forEach(element => {
       this.viajes.push(element.cantidad)
