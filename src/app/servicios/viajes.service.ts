@@ -184,4 +184,12 @@ export class ViajesService {
         return data;
       })
   }
+  ///////ENCUESTAS/////////
+  traerCantidadDeViajes(): Promise<any> {
+    return this.miHttp.httpGetP('traerCantidadDeViajes')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
 }

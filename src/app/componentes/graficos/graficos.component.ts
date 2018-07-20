@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
+import { ViajesService } from '../../servicios/viajes.service';
 
 @Component({
   selector: 'app-graficos',
@@ -8,30 +9,63 @@ import { ChartModule } from 'primeng/chart';
 })
 export class GraficosComponent implements OnInit {
 
-  data: any;
+  grafico1: boolean = false;
+  grafico2: boolean = false;
+  grafico3: boolean = false;
 
-  constructor() {
+  datosGrafico1: any;
 
-    this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: 'My Second dataset',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
-    }
+  viajesTotales: any;
+  viajes: string[] = [];
+
+  constructor(private miServicioViaje: ViajesService) {
+
+    this.miServicioViaje.traerCantidadDeViajes()
+      .then(data => {
+        this.viajesTotales = data;
+      })
   }
 
   ngOnInit() {
+  }
+
+  graficar() {
+    //variables de ocultacion
+    this.grafico1 = true;
+    //extraigo solo la cantidad
+    this.viajesTotales.forEach(element => {
+      this.viajes.push(element.cantidad)
+    });
+    //invierto para mostrar en orden
+    this.viajes = this.viajes.reverse();
+    //cargo el grafico
+    this.datosGrafico1 = {
+      labels: ['Pendiente', 'Aceptado', 'En viaje', 'Finalizado', 'Cancelado por chofer', 'Cancelado por cliente'],
+      datasets: [
+        {
+          data: this.viajes,
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#45FE14",
+            "#21EFE7",
+            "#123E14"
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ]
+        }
+      ]
+    }
+    //limpio la variable para que al llamar a la funcion varias veces se redibuje correctamente y no se multiplique
+    this.viajes = [];
+    this.miServicioViaje.traerCantidadDeViajes()
+      .then(data => {
+        this.viajesTotales = data;
+      })
   }
 
 }

@@ -1,2 +1,4 @@
+<button pButton type="button" (click)="graficar()" label="Estado actual" class="ui-button-success">
+</button>
 
-<p-chart type="bar" [data]="data"></p-chart>
+<p-chart type="pie" [data]="datosGrafico1" *ngIf="grafico1"></p-chart>

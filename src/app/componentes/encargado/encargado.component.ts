@@ -42,7 +42,7 @@ export class EncargadoComponent implements OnInit {
           { label: 'Choferes', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaChoferes']) } },
           { label: 'Encargado', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaEncargados']) } },
           { label: 'Vehiculos', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculos']) } },
-           { label: 'Vehiculos y Choferes', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculosychoferes']) } }
+          { label: 'Vehiculos y Choferes', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/listaVehiculosychoferes']) } }
         ]
       },
       {
@@ -62,7 +62,8 @@ export class EncargadoComponent implements OnInit {
       },
       {
         label: 'Informes',
-        icon: 'fa-edit'
+        icon: 'fa-edit',
+        command: (click) => { this.rute.navigate(['encargado/estadisticas']) }
       }
     ];
   }

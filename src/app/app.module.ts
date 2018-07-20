@@ -127,6 +127,11 @@ const config: Routes = [
       {
         path: 'viajesclientes',
         component: ListadoViajesEncargadoClientesComponent,
+      },
+      /////////ESTADISTICAS//////////
+      {
+        path: 'estadisticas',
+        component: GraficosComponent
       }
     ]
   },
