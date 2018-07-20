@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartModule } from 'primeng/chart';
 import { ViajesService } from '../../servicios/viajes.service';
 
 @Component({
-  selector: 'app-graficos',
-  templateUrl: './graficos.component.html',
-  styleUrls: ['./graficos.component.css']
+  selector: 'app-estadisticas-generales',
+  templateUrl: './estadisticas-generales.component.html',
+  styleUrls: ['./estadisticas-generales.component.css']
 })
-export class GraficosComponent implements OnInit {
+export class EstadisticasGeneralesComponent implements OnInit {
 
   grafico1: boolean = false;
   grafico2: boolean = false;

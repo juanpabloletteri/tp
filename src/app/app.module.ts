@@ -40,7 +40,6 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { ChoferComponent } from './componentes/chofer/chofer.component';
 import { EncargadoComponent } from './componentes/encargado/encargado.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
-import { GraficosComponent } from './componentes/graficos/graficos.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AltaClienteComponent } from './componentes/alta-cliente/alta-cliente.component';
 import { AltaVehiculoComponent } from './componentes/alta-vehiculo/alta-vehiculo.component';
@@ -64,6 +63,9 @@ import { ListadoViajesEncargadoClientesComponent } from './componentes/listado-v
 import { ListadoViajesEncargadoChoferesComponent } from './componentes/listado-viajes-encargado-choferes/listado-viajes-encargado-choferes.component';
 import { ListadoVehiculosyChoferesComponent } from './componentes/listado-vehiculosy-choferes/listado-vehiculosy-choferes.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { EstadisticasGeneralesComponent } from './componentes/estadisticas-generales/estadisticas-generales.component';
+import { EstadisticasClienteComponent } from './componentes/estadisticas-cliente/estadisticas-cliente.component';
+import { EstadisticasChoferComponent } from './componentes/estadisticas-chofer/estadisticas-chofer.component';
 
 
 //ROUTEO
@@ -130,8 +132,16 @@ const config: Routes = [
       },
       /////////ESTADISTICAS//////////
       {
-        path: 'estadisticas',
-        component: GraficosComponent
+        path: 'estadisticasGenerales',
+        component: EstadisticasGeneralesComponent
+      },
+      {
+        path: 'estadisticasCliente',
+        component: EstadisticasClienteComponent
+      },
+      {
+        path: 'estadisticasChofer',
+        component: EstadisticasChoferComponent
       }
     ]
   },
@@ -182,7 +192,6 @@ const config: Routes = [
     ChoferComponent,
     EncargadoComponent,
     MapaComponent,
-    GraficosComponent,
     LoginComponent,
     AltaClienteComponent,
     AltaVehiculoComponent,
@@ -204,7 +213,10 @@ const config: Routes = [
     ListadoViajesEncargadoClientesComponent,
     ListadoViajesEncargadoChoferesComponent,
     ListadoVehiculosyChoferesComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    EstadisticasGeneralesComponent,
+    EstadisticasClienteComponent,
+    EstadisticasChoferComponent
   ],
   imports: [
     BrowserModule,

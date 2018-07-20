@@ -63,7 +63,11 @@ export class EncargadoComponent implements OnInit {
       {
         label: 'Informes',
         icon: 'fa-edit',
-        command: (click) => { this.rute.navigate(['encargado/estadisticas']) }
+        items: [
+          { label: 'General', icon: 'fa-mail-forward', command: (click) => { this.rute.navigate(['encargado/estadisticasGenerales']) } },
+          { label: 'Cliente', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/estadisticasCliente']) } },
+          { label: 'Chofer', icon: 'fa-mail-reply', command: (click) => { this.rute.navigate(['encargado/estadisticasChofer']) } },
+        ]
       }
     ];
   }
