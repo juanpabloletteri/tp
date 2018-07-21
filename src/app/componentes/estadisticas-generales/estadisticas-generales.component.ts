@@ -9,6 +9,12 @@ import { ViajesService } from '../../servicios/viajes.service';
 export class EstadisticasGeneralesComponent implements OnInit {
 
   datosGrafico1: any;
+  datosClientes: any;
+  datosChoferes: any;
+  clienteSeleccionado: any;
+  choferSeleccionado: any;
+  cols1: any;
+  cols2: any;
 
   viajesTotales: any;
   viajes: string[] = [];
@@ -26,20 +32,60 @@ export class EstadisticasGeneralesComponent implements OnInit {
     this.miServicioViaje.traerMetrosRecorridos()
       .then(data => {
         this.distancia = data[0]['distancia'];
-        console.log(data)
+        //console.log(data)
       })
     //traigo el total de dinero ganado (consulta realizada sobre viajes terminados)
     this.miServicioViaje.traerDineroGanado()
       .then(data => {
         this.dinero = data[0]['costo'];
+        //console.log(data)
+      })
+    //traigo los datos para confeccionar la tabla resumen clientes
+    this.miServicioViaje.estadisticasCliente()
+      .then(data => {
+        this.datosClientes = data;
+        console.log(data)
+      })
+    //traigo los datos para confeccionar la tabla resumen choferes
+    this.miServicioViaje.estadisticasChofer()
+      .then(data => {
+        this.datosChoferes = data;
         console.log(data)
       })
   }
 
   ngOnInit() {
+    //columnas de la tabla resumen clientes
+    this.cols1 = [
+      { field: 'id_cliente', header: 'N° cliente' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'apellido', header: 'Apellido' },
+      { field: 'viajes', header: 'Viajes' },
+      { field: 'distancia', header: 'Distancia(km)' },
+      { field: 'dinero', header: 'Dinero($)' }
+    ];
+    //columnas de la tabla resumen choferes
+    this.cols2 = [
+      { field: 'legajo', header: 'Legajo' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'apellido', header: 'Apellido' },
+      { field: 'viajes', header: 'Viajes' },
+      { field: 'distancia', header: 'Distancia(km)' },
+      { field: 'dinero', header: 'Dinero($)' }
+    ];
+  }
+
+  onRowSelect(event) {
+    //console.log(this.viajeSeleccionado.id_viaje);
+    //this.display = true;
+  }
+
+  onRowUnselect(event) {
+
   }
 
   graficar() {
+
     //extraigo solo la cantidad
     this.viajesTotales.forEach(element => {
       this.viajes.push(element.cantidad)

@@ -1,18 +1,92 @@
-<div class="ui-g-12 ui-md-3 ui-lg-3">
-    <p-card title="Resumen Global" subtitle="Ganancias" [style]="{width: '360px'}" styleClass="ui-card-shadow">
-        <p-header>
-            <img src="Card" src="assets/img/uberto.jpg">
-        </p-header>
-        <div>
-            <h3>Total de KM recorridos: {{distancia|distancia}} </h3>
-            <h3>Total de dinero recaudado: {{dinero|currency}} </h3>
-        </div>
-        <p-footer>
-            <button pButton type="button" (click)="graficar()" label="Grafico de viajes" icon="pi pi-check" style="margin-right: .25em" class="ui-button-success"></button>
-        </p-footer>
-    </p-card>
-</div>
+<div>
+    <div class="ui-g-12 ui-md-6 ui-lg-6">
+        <h3 class="first">Resumen de Clientes</h3>
+        <p-table #dt [columns]="cols1" [value]="datosClientes" selectionMode="single" [(selection)]="clienteSeleccionado" [paginator]="true"
+            [rows]="10" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
 
-<div class="ui-g-12 ui-md-9 ui-lg-9">
-    <p-chart type="pie" [data]="datosGrafico1"></p-chart>
+            <ng-template pTemplate="caption">
+                <div style="text-align: right">
+                    <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="Exportar" (click)="dt.exportCSV()" style="float:left"></button>
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Buscador" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        style="width:auto">
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]|estado}}
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-6">
+        <h3 class="first">Resumen de Choferes</h3>
+        <p-table #dt1 [columns]="cols2" [value]="datosChoferes" selectionMode="single" [(selection)]="choferSeleccionado" [paginator]="true"
+            [rows]="10" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+
+            <ng-template pTemplate="caption">
+                <div style="text-align: right">
+                    <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="Exportar" (click)="dt1.exportCSV()" style="float:left"></button>
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Buscador" (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                        style="width:auto">
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]|estado}}
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+    </div>
+</div>
+<!--////////////////////////////////////////-->
+<div>
+    <div class="ui-g-12 ui-md-3 ui-lg-3">
+        <p-card title="Resumen Global" subtitle="Ganancias" [style]="{width: '360px'}" styleClass="ui-card-shadow">
+            <p-header>
+                <img src="Card" src="assets/img/uberto.jpg">
+            </p-header>
+            <div>
+                <h3>Total de KM recorridos: {{distancia|distancia}} </h3>
+                <h3>Total de dinero recaudado: {{dinero|currency}} </h3>
+            </div>
+            <p-footer>
+                <button pButton type="button" (click)="graficar()" label="Grafico de viajes" icon="pi pi-check" style="margin-right: .25em"
+                    class="ui-button-success"></button>
+            </p-footer>
+        </p-card>
+    </div>
+
+    <div class="ui-g-12 ui-md-9 ui-lg-9">
+        <p-chart type="pie" [data]="datosGrafico1"></p-chart>
+    </div>
 </div>

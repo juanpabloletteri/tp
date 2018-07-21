@@ -206,4 +206,18 @@ export class ViajesService {
         return data;
       })
   }
+  estadisticasCliente(): Promise<any> {
+    return this.miHttp.httpGetP('estadisticasCliente')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
+  estadisticasChofer(): Promise<any> {
+    return this.miHttp.httpGetP('estadisticasChofer')
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
 }
