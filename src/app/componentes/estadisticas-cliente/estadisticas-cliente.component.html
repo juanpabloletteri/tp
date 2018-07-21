@@ -1,6 +1,12 @@
 <div>
 
-  <div class="ui-g-12 ui-md-6 ui-lg-6">
+  <div *ngIf="datosTabla==null">
+    <p-progressSpinner> </p-progressSpinner>
+    <h3>Cargando...</h3>
+  </div>
+
+  <div class="ui-g-12 ui-md-6 ui-lg-6" *ngIf="datosTabla!=null">
+
     <h3 class="first">Resumen de Clientes</h3>
     <p-table #dt [columns]="cols" [value]="datosTabla" selectionMode="single" [(selection)]="clienteSeleccionado" [paginator]="true"
       [rows]="10" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
@@ -22,10 +28,10 @@
           </th>
         </tr>
         <tr>
-            <th *ngFor="let col of columns" [ngSwitch]="col.field">
-              <input *ngSwitchCase="'id_cliente'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-            </th>
-          </tr>
+          <th *ngFor="let col of columns" [ngSwitch]="col.field">
+            <input *ngSwitchCase="'id_cliente'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          </th>
+        </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -46,7 +52,6 @@
   </div>
 
   <div class="ui-g-12 ui-md-6 ui-lg-6">
-    <h3>Detalle de viajes</h3>
-      <p-chart type="pie" [data]="datosGrafico1"></p-chart>
+    <p-chart type="pie" [data]="datosGrafico1"></p-chart>
   </div>
 </div>
