@@ -220,4 +220,20 @@ export class ViajesService {
         return data;
       })
   }
+  //estadisticas cliente
+  traerCantidadDeViajesPorCliente(data): Promise<any> {
+    return this.miHttp.httpPostP('traerCantidadDeViajesPorCliente', { id: data })
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
+  //estadisticas chofer
+  traerCantidadDeViajesPorChofer(data): Promise<any> {
+    return this.miHttp.httpPostP('traerCantidadDeViajesPorChofer', { id: data })
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+  }
 }

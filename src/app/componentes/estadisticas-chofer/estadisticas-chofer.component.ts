@@ -12,6 +12,10 @@ export class EstadisticasChoferComponent implements OnInit {
   cols: any;
   choferSeleccionado: any;
 
+  viajesTotales: any = null;
+  viajes: string[] = [];
+  datosGrafico1: any;
+
   constructor(private miServicioViaje: ViajesService) {
     //traigo los datos para confeccionar la tabla resumen choferes
     this.miServicioViaje.estadisticasChofer()
@@ -26,7 +30,6 @@ export class EstadisticasChoferComponent implements OnInit {
       { field: 'legajo', header: 'Legajo' },
       { field: 'nombre', header: 'Nombre' },
       { field: 'apellido', header: 'Apellido' },
-      { field: 'mail', header: 'Mail' },
       { field: 'viajes', header: 'Viajes' },
       { field: 'distancia', header: 'Distancia(km)' },
       { field: 'dinero', header: 'Dinero($)' }
@@ -34,8 +37,10 @@ export class EstadisticasChoferComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    //console.log(this.viajeSeleccionado.id_viaje);
-    //this.display = true;
+    this.miServicioViaje.traerCantidadDeViajesPorChofer(this.choferSeleccionado.id_chofer)
+      .then(data => {
+        this.viajesTotales = data;
+      })
   }
 
   onRowUnselect(event) {
@@ -43,7 +48,6 @@ export class EstadisticasChoferComponent implements OnInit {
   }
 
   graficar() {
-    /*
     //extraigo solo la cantidad
     this.viajesTotales.forEach(element => {
       this.viajes.push(element.cantidad)
@@ -74,10 +78,10 @@ export class EstadisticasChoferComponent implements OnInit {
     }
     //limpio la variable para que al llamar a la funcion varias veces se redibuje correctamente y no se multiplique
     this.viajes = [];
-    this.miServicioViaje.traerCantidadDeViajes()
+    this.miServicioViaje.traerCantidadDeViajesPorChofer(this.choferSeleccionado.id_chofer)
       .then(data => {
         this.viajesTotales = data;
-      })*/
+      })
   }
 
 }

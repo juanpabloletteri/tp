@@ -1,8 +1,6 @@
 <div>
-  <div class="ui-g-12 ui-md-2 ui-lg-2">
-  </div>
 
-  <div class="ui-g-12 ui-md-8 ui-lg-8">
+  <div class="ui-g-12 ui-md-6 ui-lg-6">
     <h3 class="first">Resumen de Choferes</h3>
     <p-table #dt [columns]="cols" [value]="datosTabla" selectionMode="single" [(selection)]="choferSeleccionado" [paginator]="true"
       [rows]="10" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
@@ -37,12 +35,14 @@
 
       <ng-template pTemplate="summary">
           <p *ngIf="choferSeleccionado">
-              <p-button (onClick)="graficar()" icon="pi pi-check" label="Mostrar grafico de {{choferSeleccionado.nombre}}"></p-button>
+              <p-button (onClick)="graficar()" icon="pi pi-check" label="Mostrar grafico de {{choferSeleccionado.nombre}} {{choferSeleccionado.apellido}}"></p-button>
             </p>
       </ng-template>
     </p-table>
   </div>
 
-  <div class="ui-g-12 ui-md-2 ui-lg-2">
+  <div class="ui-g-12 ui-md-6 ui-lg-6">
+      <h3>Detalle de viajes</h3>
+        <p-chart type="pie" [data]="datosGrafico1"></p-chart>
+    </div>
   </div>
-</div>
