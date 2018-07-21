@@ -21,7 +21,11 @@
             <p-sortIcon [field]="col.field"></p-sortIcon>
           </th>
         </tr>
-
+        <tr>
+          <th *ngFor="let col of columns" [ngSwitch]="col.field">
+            <input *ngSwitchCase="'legajo'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          </th>
+        </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -34,15 +38,15 @@
 
 
       <ng-template pTemplate="summary">
-          <p *ngIf="choferSeleccionado">
-              <p-button (onClick)="graficar()" icon="pi pi-check" label="Mostrar grafico de {{choferSeleccionado.nombre}} {{choferSeleccionado.apellido}}"></p-button>
-            </p>
+        <p *ngIf="choferSeleccionado">
+          <p-button (onClick)="graficar()" icon="pi pi-check" label="Mostrar grafico de {{choferSeleccionado.nombre}} {{choferSeleccionado.apellido}}"></p-button>
+        </p>
       </ng-template>
     </p-table>
   </div>
 
   <div class="ui-g-12 ui-md-6 ui-lg-6">
-      <h3>Detalle de viajes</h3>
-        <p-chart type="pie" [data]="datosGrafico1"></p-chart>
-    </div>
+    <h3>Detalle de viajes</h3>
+    <p-chart type="pie" [data]="datosGrafico1"></p-chart>
   </div>
+</div>

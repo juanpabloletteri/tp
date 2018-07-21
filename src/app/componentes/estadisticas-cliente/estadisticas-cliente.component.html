@@ -21,7 +21,11 @@
             <p-sortIcon [field]="col.field"></p-sortIcon>
           </th>
         </tr>
-
+        <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+              <input *ngSwitchCase="'id_cliente'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+            </th>
+          </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
