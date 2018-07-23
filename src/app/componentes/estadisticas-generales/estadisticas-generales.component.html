@@ -5,7 +5,7 @@
         <h3>Cargando...</h3>
     </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-6" *ngIf="datosClientes!=null">
+    <div class="ui-g-12 ui-md-6 ui-lg-6 izquierda" *ngIf="datosClientes!=null">
 
         <h3 class="first">Resumen de Clientes</h3>
         <p-table #dt [columns]="cols1" [value]="datosClientes" selectionMode="single" [(selection)]="clienteSeleccionado" [paginator]="true"
@@ -46,7 +46,7 @@
         <h3>Cargando...</h3>
     </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-6" *ngIf="datosChoferes!=null">
+    <div class="ui-g-12 ui-md-6 ui-lg-6 derecha" *ngIf="datosChoferes!=null">
 
         <h3 class="first">Resumen de Choferes</h3>
         <p-table #dt1 [columns]="cols2" [value]="datosChoferes" selectionMode="single" [(selection)]="choferSeleccionado" [paginator]="true"
@@ -84,7 +84,7 @@
 </div>
 <!--////////////////////////////////////////-->
 <div>
-    <div class="ui-g-12 ui-md-3 ui-lg-3">
+    <div class="ui-g-12 ui-md-3 ui-lg-3 abajo">
         <p-card title="Resumen Global" subtitle="Ganancias" [style]="{width: '360px'}" styleClass="ui-card-shadow">
             <p-header>
                 <img src="Card" src="assets/img/uberto.jpg">
