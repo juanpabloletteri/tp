@@ -75,7 +75,9 @@ export class AltaViajeComponent implements OnInit {
 
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
-    this.invalidDates = [today, invalidDate];
+    //esta opcion incluye invalido el dia actual
+    //this.invalidDates = [today, invalidDate];
+    this.invalidDates = [invalidDate];
 
     //FORMA DE PAGO
     this.types = [
