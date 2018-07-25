@@ -48,12 +48,17 @@ export class EstadisticasChoferComponent implements OnInit {
   }
 
   graficar() {
-    //extraigo solo la cantidad
+    ///invierto para mostrar en orden
+    this.viajesTotales.reverse();
+    //lleno el array con ceros porque despues voy a buscar la posicion que coincida con el tipo de estado para insertar el valor, los demas los muestro en cero
+    this.viajes = ['0', '0', '0', '0', '0', '0'];
+
     this.viajesTotales.forEach(element => {
-      this.viajes.push(element.cantidad)
+      var i = -element.estado;
+      //si existe ese estado cambio el 0 del array por el valor que tiene en cantidad para graficar
+      this.viajes[i] = element.cantidad
     });
-    //invierto para mostrar en orden
-    this.viajes = this.viajes.reverse();
+
     //cargo el grafico
     this.datosGrafico1 = {
       labels: ['Pendiente', 'Aceptado', 'En viaje', 'Finalizado', 'Cancelado por chofer', 'Cancelado por cliente'],
